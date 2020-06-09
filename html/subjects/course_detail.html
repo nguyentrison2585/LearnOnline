@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang chủ</title>
+  <link rel="stylesheet" type="text/css" href="../../css/user.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/course_detail.js"></script>
+<!--   <script>
+    $(document).ready(function(){
+      $('#loadheader').load("../parts/header.html");
+      $('#loadfooter').load("../parts/footer.html");
+    });
+  </script> -->
+</head>
+<body>
+  <header>
+    <div class="clearfix" style="position: relative;">
+      <div class="unica-home-menutop hidden-xs" style="position: absolute;">
+        <div class="container">
+          <div class="row col-width-lg">
+            <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
+              <div class="unica-menu-cate">
+                <a href="/">
+                  <img src="../../images/logo.png">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
+              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+                <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+                <button type="submit" class="btn unica-btn-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
+              <ul class="unica-acc-zone">
+                <li><a class="unica-reg-acc" href="/login">Đăng nhập</a></li>
+                <li><a class="unica-log-acc" href="/register">Đăng ký</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hidden-xs" style="margin-top: 62px;"></div>
+  <main style="margin-top: 42px;">
+    <div class="popup_success"></div>
+    <div class="u-course-highlight">
+      <div class="container">
+        <div class="breadcumb-detail-course">
+          <a href="/">Trang chủ</a>
+          <i class="fas fa-angle-double-right"></i>
+          <a href="/course/nuoi-day-con">Nuôi dạy con </a>
+          <i class="fas fa-angle-double-right"></i>
+          19 Tuyệt chiêu nuôi dạy con thành tài
+        </div>
+        <div class="u-detail-block-title">
+          <h1 itemprop="itemReviewed">
+            <span itemprop="name">19 Tuyệt chiêu nuôi dạy con thành tài</span>
+          </h1>
+          <div class="u-detail-desc" itemprop="description">Lắng nghe con, phát triển điểm mạnh của con, gần gũi với con cái, thấu hiểu con cái để nuôi dạy con tốt nhất</div>
+          <div class="u-detail-tea" itemprop="author">
+            <img class="picture-teacher-circle" src="https://unica.vn/uploads/Thaoptt/August52016405pm_dao-ngoc-cuong_thumb.jpg" align="">
+            <a href="/teacher/dao-ngoc-cuong">  <span itemprop="name">Đào Ngọc Cường</span></a>
+          </div>
+          <div class="u-detail-rate">
+            <span class="star-rate">
+              <i class="fa fa-star co-or" aria-hidden="true"></i>
+              <i class="fa fa-star co-or" aria-hidden="true"></i>
+              <i class="fa fa-star co-or" aria-hidden="true"></i>
+              <i class="fa fa-star co-or" aria-hidden="true"></i>
+              <i class="fa fa-star co-or" aria-hidden="true"></i>
+            </span>
+            <span>28</span>
+            đánh giá
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-detail-course">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-12 pdr-b hidden-xs">
+            <div class="tab-detail hidden-xs">
+              <ul>
+                <li>
+                  <a href="#" class="tablink active" id="default-open">
+                    <i class="fas fa-info"></i>
+                    Giới thiệu
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="tablink">
+                    <i class="fas fa-user-tie"></i>
+                    Thông tin giảng viên
+                  </a>
+                </li>
+                <li>
+                  <a href="#" id="course-dropdown">
+                    <i class="fas fa-file-alt"></i>
+                    Nội dung khóa học
+                  </a>
+                  <ul id="course-content" class="dropdown-content" style="display:none;">
+                  </ul>
+                </li>
+                <li>
+                  <a href="#" class="tablink">
+                    <i class="fas fa-question-circle"></i>
+                    Bài kiểm tra
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="u-detail-block-right">
+              <div class="u-intro tab-content" id="u-course-intro">
+                <div class="u-video">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item img-responsive" src="https://www.youtube.com/embed/FJZ4pbf-Ips?rel=0&amp;showinfo=0" width="100%" height="auto" scrolling="no" frameborder="0" allowfullscreen="">
+                    </iframe>
+                  </div>
+                </div>
+                <div class="u-learn-what">
+                  <h3>Bạn sẽ học được gì</h3>
+                  <div class="content">
+                    <div class="row">
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Nắm được mấu chốt của việc nuôi dạy con đúng phương pháp</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Có giải pháp giải quyết ngay tình trạng con mình đang gặp phải</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Có định hướng cho tương lai con dựa vào năng lực và sở trường của con</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Biết cách vận dụng dạy con mọi lúc mọi nơi thông qua các hoạt động hàng ngày</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Có tầm nhìn xa để định hướng đúng đắn về nghề nghiệp của con sau này</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                      Biết nắm bắt được chìa khóa để giúp con phát huy năng lực, sở trường, khắc phục hạn chế của con</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-des-course" id="u-des-course">
+                  <h2>Giới thiệu khóa học</h2>
+                  <p>Sinh con và nuôi dạy con là cả một quá trình gian nan mà bất kỳ bậc cha mẹ nào cũng trải qua. Trẻ con giống như một trang giấy trắng, được tô đen, bồi hồng và phát triển theo đúng những gì chúng trông thấy và trải qua. Vì vậy, việc giáo dục và nuôi dạy con cái từ khi còn nhỏ là rất quan trọng.</p>
+
+                  <p>Có rất nhiều phụ huynh phàn nàn về việc không thể nói chuyện được với con khi con lớn. Trước hết, hãy làm bạn với con, lắng nghe con, từ đó con sẽ lắng nghe mình.</p>
+
+                  <p>Khóa học <strong>“19 Tuyệt chiêu nuôi dạy con thành tài”</strong> của <strong>Diễn giả Đào Ngọc Cường</strong> sẽ tiết lộ cho Bạn – các bận cha mẹ, thầy cô những bí quyết để trở thành những người bạn, người đồng hành để tư vấn, hướng dẫn, hỗ trợ cho con sống có mục tiêu, quan tâm yêu thương gia đình hơn.</p>
+
+                  <p><strong>Bạn sẽ biết cách:</strong></p>
+
+                  <ul>
+                    <li>Thông qua những quan sát, giúp phát hiện ra những điểm mạnh, sở trường của con để giúp con phát huy, thấu hiểu con</li>
+                    <li>Lý giải những hành động của trẻ mà bạn không thể hiểu nổi.</li>
+                    <li>Giúp cha mẹ tìm ra tiếng nói chung với con cái trong độ tuổi phát triển thay đổi về tâm sinh lý.</li>
+                    <li>Tránh được những sai lầm của cha mẹ trong quá trình nuôi dạy con</li>
+                    <li>Hiểu được đam mê, sở trường, sở thích, năng khiếu của con để có phương pháp giáo dục phù hợp, định hướng tương lai nghề nghiệp cho con sau này.</li>
+                    <li>Giải quyết tình trạng biếng ăn của trẻ. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="u-course-teacher tab-content" id="u-course-teacher">
+                <h3>Thông tin giảng viên</h3>
+                <div class="uct-left">
+                  <div class="uct-ava-gv"><img class="lazy" align="" src="https://unica.vn/uploads/Thaoptt/August52016405pm_dao-ngoc-cuong_thumb.jpg" style=""></div>
+                  <div class="uct-rate-gv">
+                    <ul>
+                      <li>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span>1154</span> học viên
+                      </li>
+                      <li><i class="fa fa-play-circle" aria-hidden="true"></i> <span>8</span> khóa học</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="uct-right">
+                  <div class="uct-name-gv"><a target="_blank" href="https://unica.vn/teacher/dao-ngoc-cuong">Đào Ngọc Cường</a></div>
+                  <div class="uct-des-gv">CEO Đánh Thức Tiềm Năng Việt. </div>
+                  <div class="uct-more-gv">
+                    <p>Diễn giả <strong>Đào Ngọc Cường</strong>&nbsp;là&nbsp;Chủ tịch HĐQT, Giám đốc Công ty cổ phần đào tạo đánh thức tiềm năng Việt</p>
+
+                    <p>Chuyên gia đào tạo hàng đầu Việt Nam về phát triển con người và tạo động lực.</p>
+
+                    <p>Là đại sứ thương hiệu cho thuốc cai nghiện Bông Sen (Thuốc cai nghiện duy nhất Việt Nam trên thế giới).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    <p>Ông đã đào tạo, chia sẻ cho hàng chục ngàn người mỗi năm cho nhiều đối tượng trong cả nước cũng như các nước Campuchia, Hongkong, Singapo, Malaysia… Nhiều tập đoàn lớn, Doanh nghiệp, Hội doanh nhân, các trường Đại học, Cao đẳng, THPT, THCS, Tiểu học, Mầm non trong cả nước.</p>
+
+                    <p>Nhiều báo đài phỏng vấn đưa tin và mời tham gia tư vấn các chương trình trên truyền hình như báo: Tuổi trẻ, pháp luật, phụ nữ, Doanh nhân và thương hiệu, Thương gia thị trường, Tạp chí tuyền hình….Đài truyền hình Hà Nội, Thanh Hóa, VTC, VTV…</p>
+
+                    <p>Ông được cộng đồng đánh giá là một diễn giả có lối diễn thuyết đặc biệt, thân thiện, dễ hiểu, dễ áp dụng. Luôn chiếm được trái tim của người nghe. Là tấm gương sáng cho thế hệ trẻ học tập noi theo.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="u-lesson tab-content" id="u-lesson-content">
+                <div class="u-lesson-video">
+                </div>
+              </div>
+              <div class="u-course-test tab-content" id="u-course-test">
+                <div class="u-course-test-header">
+                  <div class="top-stripe"></div>
+                  <h2>Bài kiểm tra</h2>
+                  <p class="u-test-description">Tự đánh giá bạn đã hiểu bài học</p>
+                </div>
+                <div id="list-question">
+                  <div class="u-course-test-question">
+                    <div class="question">
+                      Gia đình bạn có bao nhiêu thành viên
+                    </div>
+                    <div class="answers">
+                      <label class="answer">
+                        1
+                        <input type="radio" checked="true" name="answer">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        2
+                        <input type="radio" name="answer">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        3
+                        <input type="radio" name="answer">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        4
+                        <input type="radio" name="answer">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="u-course-test-question">
+                    <div class="question">
+                      Gia đình bạn có bao nhiêu thành viên
+                    </div>
+                    <div class="answers">
+                      <label class="answer">
+                        1
+                        <input type="radio" checked="true" name="answer3">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        2
+                        <input type="radio" name="answer3">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        3
+                        <input type="radio" name="answer3">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        4
+                        <input type="radio" name="answer3">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="u-course-test-question">
+                    <div class="question">
+                      Gia đình bạn có bao nhiêu thành viên
+                    </div>
+                    <div class="answers">
+                      <label class="answer">
+                        1
+                        <input type="radio" checked="true" name="answer1">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        2
+                        <input type="radio" name="answer1">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        3
+                        <input type="radio" name="answer1">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        4
+                        <input type="radio" name="answer1">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="u-course-test-question">
+                    <div class="question">
+                      Gia đình bạn có bao nhiêu thành viên
+                    </div>
+                    <div class="answers">
+                      <label class="answer">
+                        1
+                        <input type="radio" checked="true" name="answer2">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        2
+                        <input type="radio" name="answer2">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        3
+                        <input type="radio" name="answer2">
+                        <span class="checkmark"></span>
+                      </label>
+                      <label class="answer">
+                        4
+                        <input type="radio" name="answer2">
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="submit-answers">
+                  <button type="submit">Gửi câu trả lời</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div id="footer2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdl">
+            <span class="logo-footer">
+              <a class="navbar-brand" href="/"><img class="img-responsive" src="../..//images/logo.png"></a>
+            </span>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span style="color: white;">122 Vĩnh Tuy, Hai Bà Trưng, Hà Nội</span>
+              </li>
+              <li>
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <a href="tel:0904886095">035 800 3347</a>
+              </li>
+              <li>
+                <i class="far fa-envelope" aria-hidden="true"></i>
+                <span style="color: white;">nguyentrison.33.10a3@gmail.com </span>
+              </li>
+              <li>
+                <i class="far fa-clock" aria-hidden="true"></i>
+                <span style="color: white;">8:00 - 22:00 </span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Về Unica</h4>
+            <ul>
+              <li><a href="/gioi-thieu">Giới thiệu về Unica</a></li>
+              <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
+              <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
+              <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
+              <li><a href="/kichhoat">Kích hoạt khóa học</a></li>
+              <li><a href="/blog">Góc chia sẻ</a></li>
+              <li><a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Hợp tác liên kết</h4>
+            <ul>
+              <li><a href="/teacher">Đăng ký giảng viên</a></li>
+              <li><a href="/daily">Đăng ký đại lý</a></li>
+              <li>
+                <a href="https://edubit.vn" target="_blank" rel="nofollow">Giải pháp e-learning</a>
+              </li>
+              <li><a href="https://acabiz.vn" target="_blank">Đào tạo doanh nghiệp</a></li>
+              <li><a href="http://job.unica.vn/" target="_blank" rel="nofollow">Tuyển dụng nhân tài</a></li>
+              <li><a href="/the">Thẻ học online</a></li>
+              <li><a href="/affiliate">Affiliate</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
+            <span id="social-connect">
+              <h4>Kết nối với Unica</h4>
+              <ul>
+                <li class="smedia-01">
+                  <a href="https://www.facebook.com/profile.php?id=100012146472728">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-02">
+                  <a href="https://www.instagram.com/leeg_son/">
+                    <i class="fab fa-instagram-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-03">
+                  <a href="https://twitter.com/explore">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-04">
+                  <a href="https://www.google.com/">
+                    <i class="fab fa-google-plus-square"></i>
+                  </a>
+                </li>
+              </ul>
+            </span>
+            <span class="dkct">
+              <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27171" target="_blank" rel="nofollow">
+                <img src="../../images/dkkd-vlance.png">
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <p>© iNET - Học viện Online Unica - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

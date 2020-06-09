@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang chủ</title>
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link href="../../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $("#includedHeader").load("../parts/header.html");
+    });
+    $(function(){
+      $("#includedFooter").load("../parts/footer.html");
+    });
+  </script>
+</head>
+<body>
+  <div id="includedHeader"></div>
+  <div class="container">
+    <div class="login-wrap">
+      <div class="loginpage-left-banner">
+        <img src="../../images/login-left-banner.png" alt="" class="img-responsive loginpage-left-banner__img">
+      </div>
+      <div class="loginpage-form">
+        <div class="loginpage-form-wrap form-login">
+          <h3 class="text-center loginpage-form__title">Đăng nhập</h3>
+          <div>
+            <div class="form-group">
+              <input name="email" placeholder="Tên đăng nhập hoặc Email" type="text" class="form-control loginpage-form__input">
+            </div>
+            <div class="form-group has-eye">
+              <input id="loginFormPassword" type="password" placeholder="Mật khẩu" class="form-control loginpage-form__input">
+              <div class="eye">
+                <img src="../../images/ic_eye0.png" alt="" class="img-responsive">
+              </div>
+            </div>
+            <div style="margin-bottom: 15px;">
+              <div id="recaptcha-loginForm">
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <div class="loginpage-form__remember float-left">
+                <label class="loginpage-form__remember-checkbox">
+                  Nhớ mật khẩu
+                  <input type="checkbox" checked="checked">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn loginpage-form__button-submit">Đăng nhập</button>
+            <div class="forgetpass">
+              <a href="forgot_password.php">
+                Bạn quên kí danh hoặc mật khẩu?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="includedFooter"></div>
+</body>
+</html>

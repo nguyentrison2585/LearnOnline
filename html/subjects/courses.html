@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang chủ</title>
+  <link rel="stylesheet" type="text/css" href="../../css/user.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/courses.js"></script>
+<!--   <script>
+    $(document).ready(function(){
+      $('#loadheader').load("../parts/header.html");
+      $('#loadfooter').load("../parts/footer.html");
+    });
+  </script> -->
+</head>
+<body>
+  <header>
+    <div class="clearfix" style="position: relative;">
+      <div class="unica-home-menutop hidden-xs" style="position: absolute;">
+        <div class="container">
+          <div class="row col-width-lg">
+            <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
+              <div class="unica-menu-cate">
+                <a href="/">
+                  <img src="../../images/logo.png">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
+              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+                <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+                <button type="submit" class="btn unica-btn-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
+              <ul class="unica-acc-zone">
+                <li><a class="unica-reg-acc" href="/login">Đăng nhập</a></li>
+                <li><a class="unica-log-acc" href="/register">Đăng ký</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hidden-xs" style="margin-top: 62px;"></div>
+  <main>
+    <div class="container-fluid bg-br-2">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li>
+            <a href="../static_pages/home.html">Trang chủ</a>
+          </li>
+          <li class="active">Ngoại ngữ</li>
+        </ol>
+      </div>
+    </div>
+    <div class="container-fluid bg-br" style="padding:15px 0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 u-list-leftbar hidden-xs ">
+            <section>
+              <div class="u-cate-list">
+                <p style="font-size: 18px;font-weight: bold;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;padding-bottom: 5px;">Danh mục khóa học</p>
+                <ul>
+                  <li>
+                    <a title="Khóa học Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Trung Giao Tiếp" href="/course/ngoai-ngu" class="active">
+                      <i class="fas fa-language" aria-hidden="true"></i> Ngoại ngữ
+                    </a>
+                  </li>
+                  <li>
+                    <a title="Khóa học Marketing thực chiến từ những giảng viên hàng đầu Việt Nam" href="/course/marketing"><i class="fas fa-chart-line" aria-hidden="true"></i> Marketing</a>
+                  </li>
+                  <li>
+                    <a title="69+ Khóa học tin học văn phòng từ cơ bản đến nâng cao" href="/course/tin-hoc-van-phong"><i class="fas fa-desktop" aria-hidden="true"></i> Tin học văn phòng</a>
+                  </li>
+                  <li>
+                    <a title="Các khóa học thiết kế từ cơ bản đến chuyên sâu" href="/course/thiet-ke"><i class="fas fa-paint-brush" aria-hidden="true"></i> Thiết kế</a>
+                  </li>
+                  <li>
+                    <a title="Các khóa học kinh doanh và khởi nghiệp để gia tăng doanh số hiệu quả" href="/course/kinh-doanh-khoi-nghiep"><i class="fas fa-rocket" aria-hidden="true"></i> Kinh doanh - Khởi nghiệp</a>
+                  </li>
+                  <li>
+                    <a title="Khóa học phát triển cá nhân đỉnh cao để cải thiện cuộc sống và sự nghiệp" href="/course/phat-trien-ca-nhan"><i class="fas fa-lightbulb" aria-hidden="true"></i> Phát triển cá nhân</a>
+                  </li>
+                  <li>
+                    <a title="Khóa học Sales, bán hàng từ các chuyên gia Marketing hàng đầu Unica" href="/course/sales-ban-hang"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Sales, bán hàng</a>
+                  </li>
+                  <li>
+                    <a title="Học Công Nghệ Thông Tin Online Cùng Chuyên Gia Hàng Đầu Trong Ngành" href="/course/cong-nghe-thong-tin"><i class="fas fa-code" aria-hidden="true"></i> Công nghệ thông tin</a>
+                  </li>
+                  <li>
+                    <a title="Các khóa học nâng các kiến thức sức khỏe và giới tính cho người Việt" href="/course/suc-khoe-gioi-tinh"><i class="fas fa-heartbeat" aria-hidden="true"></i> Sức khỏe - Giới tính</a>
+                  </li>
+                  <li>
+                    <a title="Khóa học phong cách sống giúp thành công hơn trong cuốc sống" href="/course/phong-cach-song"><i class="fas fa-utensils" aria-hidden="true"></i> Phong cách sống</a>
+                  </li>
+                  <li>
+                    <a title="Các khóa học nuôi dạy con đúng cách theo khoa học" href="/course/nuoi-day-con"><i class="fas fa-child" aria-hidden="true"></i> Nuôi dạy con </a>
+                  </li>
+                  <li>
+                    <a title="Các khoá học về hôn nhân, giữ gìn gia đình hạnh phúc" href="/course/hon-nhan-gia-dinh"><i class="fas fa-users" aria-hidden="true"></i> Hôn nhân &amp; Gia đình</a>
+                  </li>
+                  <li>
+                    <a title="Các khóa học nhiếp ảnh, dựng phim từ chuyên gia trên Unica" href="/course/nhiep-anh-dung-phim"><i class="fas fa-camera" aria-hidden="true"></i> Nhiếp ảnh, dựng phim</a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-content" style="">
+            <div class="u-all-course">
+              <h1 style="font-size: 20px;font-family: inherit;line-height: 1.1;color: inherit;margin-top: 0px;">Khóa học Ngoại ngữ </h1>
+              <h3>Tất cả [ <span class="p-or"></span> <p> khóa học</p> ]</h3>
+              <style>
+                .box-teacher .slick-next:before,.box-teacher .slick-prev:before{color: #F37E65 !important;}
+              </style>
+              <section>
+                <ul id="courses-list">
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div id="footer2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdl">
+            <span class="logo-footer">
+              <a class="navbar-brand" href="/"><img class="img-responsive" src="../..//images/logo.png"></a>
+            </span>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span style="color: white;">122 Vĩnh Tuy, Hai Bà Trưng, Hà Nội</span>
+              </li>
+              <li>
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <a href="tel:0904886095">035 800 3347</a>
+              </li>
+              <li>
+                <i class="far fa-envelope" aria-hidden="true"></i>
+                <span style="color: white;">nguyentrison.33.10a3@gmail.com </span>
+              </li>
+              <li>
+                <i class="far fa-clock" aria-hidden="true"></i>
+                <span style="color: white;">8:00 - 22:00 </span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Về Unica</h4>
+            <ul>
+              <li><a href="/gioi-thieu">Giới thiệu về Unica</a></li>
+              <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
+              <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
+              <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
+              <li><a href="/kichhoat">Kích hoạt khóa học</a></li>
+              <li><a href="/blog">Góc chia sẻ</a></li>
+              <li><a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Hợp tác liên kết</h4>
+            <ul>
+              <li><a href="/teacher">Đăng ký giảng viên</a></li>
+              <li><a href="/daily">Đăng ký đại lý</a></li>
+              <li>
+                <a href="https://edubit.vn" target="_blank" rel="nofollow">Giải pháp e-learning</a>
+              </li>
+              <li><a href="https://acabiz.vn" target="_blank">Đào tạo doanh nghiệp</a></li>
+              <li><a href="http://job.unica.vn/" target="_blank" rel="nofollow">Tuyển dụng nhân tài</a></li>
+              <li><a href="/the">Thẻ học online</a></li>
+              <li><a href="/affiliate">Affiliate</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
+            <span id="social-connect">
+              <h4>Kết nối với Unica</h4>
+              <ul>
+                <li class="smedia-01">
+                  <a href="https://www.facebook.com/profile.php?id=100012146472728">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-02">
+                  <a href="https://www.instagram.com/leeg_son/">
+                    <i class="fab fa-instagram-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-03">
+                  <a href="https://twitter.com/explore">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-04">
+                  <a href="https://www.google.com/">
+                    <i class="fab fa-google-plus-square"></i>
+                  </a>
+                </li>
+              </ul>
+            </span>
+            <span class="dkct">
+              <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27171" target="_blank" rel="nofollow">
+                <img src="../../images/dkkd-vlance.png">
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <p>© iNET - Học viện Online Unica - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

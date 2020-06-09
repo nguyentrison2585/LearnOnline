@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trang chủ</title>
+  <link rel="stylesheet" type="text/css" href="../../css/user.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/home.js"></script>
+<!--   <script>
+    $(document).ready(function(){
+      $('#loadheader').load("../parts/header.html");
+      $('#loadfooter').load("../parts/footer.html");
+    });
+  </script> -->
+</head>
+<body>
+  <header>
+    <div class="clearfix" style="position: relative;">
+      <div class="unica-home-menutop hidden-xs" style="position: absolute;">
+        <div class="container">
+          <div class="row col-width-lg">
+            <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
+              <div class="unica-menu-cate">
+                <a href="/">
+                  <img src="../../images/logo.png">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
+              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+                <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+                <button type="submit" class="btn unica-btn-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
+              <ul class="unica-acc-zone">
+                <li><a class="unica-reg-acc" href="/login">Đăng nhập</a></li>
+                <li><a class="unica-log-acc" href="/register">Đăng ký</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hidden-xs" style="margin-top: 62px;"></div>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="slider-new" id="home-slide">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous">
+              <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+              </svg>
+            </button>
+
+            <button class="flickity-button flickity-prev-next-button next" type="button" aria-label="Next">
+              <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path>
+              </svg>
+            </button>
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="dot active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" class="dot"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2" class="dot"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item has-slide-effect active" style="background: #1B7BFF">
+                <div>
+                  <a target="_blank" href="https://unica.vn/donggia" title="Mừng sinh nhật Unica 4 tuổi">
+                    <img src="https://imgur.com/NMLPfe7.jpg" alt="Mừng sinh nhật Unica 4 tuổi">
+                  </a>
+                </div>
+              </div>
+              <div class="item has-slide-effect" style="background: #F2882C">
+                <div>
+                  <a target="_blank" href="https://unica.vn/p/top-20-khoa-hoc-tin-hoc-van-phong-hay-nhat" title="Tin học văn phòng">
+                    <img class="lazy" alt="Tin học văn phòng" src="https://imgur.com/6bmgs50.jpg" style="">
+                  </a>
+                </div>
+              </div>
+              <div class="item has-slide-effect" style="background: #FFD448">
+                <div>
+                  <a target="_blank" href="https://unica.vn/p/khoa-hoc-moi-thang-5-2020" title="Khóa học mới tháng 5">
+                    <img class="lazy" alt="Khóa học mới tháng 5" src="https://imgur.com/coUvnHm.jpg" style="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="unica-learn-today">
+            <h4>Hôm nay bạn muốn học gì ?</h4>
+            <ul class="unica-lt-box">
+              <li>
+                <a href="../subjects/courses.html?subjectId=5ed8ffcf20cbd80017eb0176" class="u-tags-mini">
+                  <p> <i class="fas fa-language" aria-hidden="true"></i> Ngoại ngữ</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/marketing" class="u-tags-mini">
+                  <p> <i class="fas fa-chart-line" aria-hidden="true"></i> Marketing</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/tin-hoc-van-phong" class="u-tags-mini">
+                  <p> <i class="fas fa-desktop" aria-hidden="true"></i> Tin học văn phòng</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/thiet-ke" class="u-tags-mini">
+                  <p> <i class="fas fa-paint-brush" aria-hidden="true"></i> Thiết kế</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/kinh-doanh-khoi-nghiep" class="u-tags-mini">
+                  <p> <i class="fas fa-rocket" aria-hidden="true"></i> Kinh doanh - Khởi nghiệp</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/phat-trien-ca-nhan" class="u-tags-mini">
+                  <p> <i class="fas fa-lightbulb" aria-hidden="true"></i> Phát triển cá nhân</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/sale-ban-hang" class="u-tags-mini">
+                  <p> <i class="fas fa-shopping-cart" aria-hidden="true"></i> Sale, bán hàng</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/cong-nghe-thong-tin" class="u-tags-mini">
+                  <p> <i class="fas fa-code" aria-hidden="true"></i> Công nghệ thông tin</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/suc-khoe-gioi-tinh" class="u-tags-mini">
+                  <p> <i class="fas fa-heartbeat" aria-hidden="true"></i> Sức khỏe - Giới tính</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/phong-cach-song" class="u-tags-mini">
+                  <p> <i class="fas fa-utensils" aria-hidden="true"></i> Phong cách sống</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/nuoi-day-con" class="u-tags-mini">
+                  <p> <i class="fas fa-child" aria-hidden="true"></i> Nuôi dạy con</p>
+                </a>
+              </li>
+              <li>
+                <a href="/course/hon-nhan-gia-dinh" class="u-tags-mini">
+                  <p> <i class="fas fa-users" aria-hidden="true"></i> Hôn nhân &amp; Gia đình</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 pdm-No">
+          <div class="unica-reason">
+            <h4>Tại sao bạn nên học cùng Unica?</h4>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_1.png" style="">
+                </div>
+                <div class="txt-reason"> Học trực tuyến
+                  <span>mọi lúc, mọi nơi</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_2.png" style="">
+                </div>
+                <div class="txt-reason"> Hoàn tiền
+                  <span>nếu không hài lòng</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_3.png" style="">
+                </div>
+                <div class="txt-reason"> Thanh toán 1 lần
+                  <span>học mãi mãi</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_4.png" style="">
+                </div>
+                <div class="txt-reason"> Giao miễn phí
+                  <span>khóa học tới tận nhà</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="unica-be-teacher">
+          <div class="unica-be-teacher-txt">
+            <p>TRỞ THÀNH</p>
+            <h4>GIẢNG VIÊN UNICA</h4>
+            <a href="/teacher">ĐĂNG KÝ NGAY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div id="footer2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdl">
+            <span class="logo-footer">
+              <a class="navbar-brand" href="/"><img class="img-responsive" src="../..//images/logo.png"></a>
+            </span>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span style="color: white;">122 Vĩnh Tuy, Hai Bà Trưng, Hà Nội</span>
+              </li>
+              <li>
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <a href="tel:0904886095">035 800 3347</a>
+              </li>
+              <li>
+                <i class="far fa-envelope" aria-hidden="true"></i>
+                <span style="color: white;">nguyentrison.33.10a3@gmail.com </span>
+              </li>
+              <li>
+                <i class="far fa-clock" aria-hidden="true"></i>
+                <span style="color: white;">8:00 - 22:00 </span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Về Unica</h4>
+            <ul>
+              <li><a href="/gioi-thieu">Giới thiệu về Unica</a></li>
+              <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
+              <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
+              <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
+              <li><a href="/kichhoat">Kích hoạt khóa học</a></li>
+              <li><a href="/blog">Góc chia sẻ</a></li>
+              <li><a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Hợp tác liên kết</h4>
+            <ul>
+              <li><a href="/teacher">Đăng ký giảng viên</a></li>
+              <li><a href="/daily">Đăng ký đại lý</a></li>
+              <li>
+                <a href="https://edubit.vn" target="_blank" rel="nofollow">Giải pháp e-learning</a>
+              </li>
+              <li><a href="https://acabiz.vn" target="_blank">Đào tạo doanh nghiệp</a></li>
+              <li><a href="http://job.unica.vn/" target="_blank" rel="nofollow">Tuyển dụng nhân tài</a></li>
+              <li><a href="/the">Thẻ học online</a></li>
+              <li><a href="/affiliate">Affiliate</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
+            <span id="social-connect">
+              <h4>Kết nối với Unica</h4>
+              <ul>
+                <li class="smedia-01">
+                  <a href="https://www.facebook.com/profile.php?id=100012146472728">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-02">
+                  <a href="https://www.instagram.com/leeg_son/">
+                    <i class="fab fa-instagram-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-03">
+                  <a href="https://twitter.com/explore">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-04">
+                  <a href="https://www.google.com/">
+                    <i class="fab fa-google-plus-square"></i>
+                  </a>
+                </li>
+              </ul>
+            </span>
+            <span class="dkct">
+              <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27171" target="_blank" rel="nofollow">
+                <img src="../../images/dkkd-vlance.png">
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <p>© iNET - Học viện Online Unica - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
