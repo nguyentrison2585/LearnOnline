@@ -21,6 +21,36 @@ $(document).ready(function() {
 
   var subjectId = parseURLParams(window.location.href);
   console.log(subjectId);
+
+  $.ajax({
+    url: 'https://teaching-online-lms.herokuapp.com/api/user/subjects',
+    dataType: 'json',
+    error: function(e) {
+      $('#lesson-info').html('<p>An error has occurred</p>');
+      console.log(e);
+    },
+    success: function(data) {
+      for(let i = 0;i < data.length;i++) {
+        var subject_block = `<li>
+                    <a title="Khóa học ${data[i].name}" data-id="${data[i].id}" class="subject-link" href="courses.html?subjectId=${data[i].id}">
+                      <i class="fas fa-language" aria-hidden="true"></i> ${data[i].name}
+                    </a>
+                  </li>`
+        $('#subjects-list').append(subject_block);
+      }
+      subjects = $('.subject-link');
+      for (let i = 0; i < subjects.length; i++) {
+        if ($(subjects[i]).attr('data-id') == subjectId.subjectId[0]) {
+          $(subjects[i]).addClass('active');
+          $('#subject-name').html(data[i].name)
+          document.title = 'Khóa học' + data[i].name;
+        }
+      }
+      console.log(data);
+    },
+    type: 'GET'
+  });
+
   $.ajax({
     url: 'https://teaching-online-lms.herokuapp.com/api/user/courses',
     dataType: 'json',

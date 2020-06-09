@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trang chủ</title>
+  <title></title>
   <link rel="stylesheet" type="text/css" href="../../css/user.css">
   <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,7 +23,7 @@
           <div class="row col-width-lg">
             <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
               <div class="unica-menu-cate">
-                <a href="/">
+                <a href="../static_pages/home.html">
                   <img src="../../images/logo.png">
                 </a>
               </div>
@@ -53,20 +53,20 @@
     <div class="u-course-highlight">
       <div class="container">
         <div class="breadcumb-detail-course">
-          <a href="/">Trang chủ</a>
+          <a href="../static_pages/home.html">Trang chủ</a>
           <i class="fas fa-angle-double-right"></i>
-          <a href="/course/nuoi-day-con">Nuôi dạy con </a>
+          <span id="subject-name"></span>
           <i class="fas fa-angle-double-right"></i>
-          19 Tuyệt chiêu nuôi dạy con thành tài
+          <span id="course-name-header"></span>
         </div>
         <div class="u-detail-block-title">
           <h1 itemprop="itemReviewed">
-            <span itemprop="name">19 Tuyệt chiêu nuôi dạy con thành tài</span>
+            <span itemprop="name" id="course-name">Anh văn giao tiếp cho người hoàn toàn mất gốc</span>
           </h1>
-          <div class="u-detail-desc" itemprop="description">Lắng nghe con, phát triển điểm mạnh của con, gần gũi với con cái, thấu hiểu con cái để nuôi dạy con tốt nhất</div>
+          <div class="u-detail-desc" itemprop="description" id="course-description"></div>
           <div class="u-detail-tea" itemprop="author">
-            <img class="picture-teacher-circle" src="https://unica.vn/uploads/Thaoptt/August52016405pm_dao-ngoc-cuong_thumb.jpg" align="">
-            <a href="/teacher/dao-ngoc-cuong">  <span itemprop="name">Đào Ngọc Cường</span></a>
+            <img class="picture-teacher-circle" src="https://unica.vn/uploads/nguyenthiDieuLinh/October72016904am_th-s-ruby-thao-tran_thumb.jpg" align="">
+            <a href="/teacher/th-s-ruby-thao-tran">  <span itemprop="name" id="teacher-name-header"></span></a>
           </div>
           <div class="u-detail-rate">
             <span class="star-rate">
@@ -101,7 +101,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" id="course-dropdown">
+                  <a href="#" class="tablink" id="course-dropdown">
                     <i class="fas fa-file-alt"></i>
                     Nội dung khóa học
                   </a>
@@ -122,83 +122,102 @@
               <div class="u-intro tab-content" id="u-course-intro">
                 <div class="u-video">
                   <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item img-responsive" src="https://www.youtube.com/embed/FJZ4pbf-Ips?rel=0&amp;showinfo=0" width="100%" height="auto" scrolling="no" frameborder="0" allowfullscreen="">
-                    </iframe>
+                    <iframe class="embed-responsive-item img-responsive" src="https://www.youtube.com/embed/qbBDF8DIFGk" width="100%" height="auto" scrolling="no" frameborder="0" allowfullscreen=""></iframe>
                   </div>
                 </div>
                 <div class="u-learn-what">
                   <h3>Bạn sẽ học được gì</h3>
                   <div class="content">
                     <div class="row">
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Nắm được mấu chốt của việc nuôi dạy con đúng phương pháp</div></div>
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Có giải pháp giải quyết ngay tình trạng con mình đang gặp phải</div></div>
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Có định hướng cho tương lai con dựa vào năng lực và sở trường của con</div></div>
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Biết cách vận dụng dạy con mọi lúc mọi nơi thông qua các hoạt động hàng ngày</div></div>
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Có tầm nhìn xa để định hướng đúng đắn về nghề nghiệp của con sau này</div></div>
-                      <div class="col-sm-6 form-group" style="margin-top: 0px;"><div class="title" style="line-height:21px;margin-bottom: 0px; ">
-                      Biết nắm bắt được chìa khóa để giúp con phát huy năng lực, sở trường, khắc phục hạn chế của con</div></div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Lấy lại nền tảng tiếng Anh bị mất gốc, tập trung vào phần nói và nghe
+                        </div>
+                      </div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Tự tin trong cuộc sống và giao tiếp với người nước ngoài
+                        </div>
+                      </div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Bổ trợ cho công việc cũng như học tập một cách tốt nhất và hiệu quả nhất.
+                        </div>
+                      </div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Có thể giao tiếp và trả lời phỏng vấn bằng tiếng anh lưu loát.
+                        </div>
+                      </div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Nắm bắt được yếu tố cần thiết khi giao tiếp và làm việc với người nước ngoài
+                        </div>
+                      </div>
+                      <div class="col-sm-6 form-group" style="margin-top: 0px;">
+                        <div class="title" style="line-height:21px;margin-bottom: 0px; ">
+                          Cơ hội làm việc trong môi trường nước ngoài với chế độ đãi ngộ cao
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="u-des-course" id="u-des-course">
                   <h2>Giới thiệu khóa học</h2>
-                  <p>Sinh con và nuôi dạy con là cả một quá trình gian nan mà bất kỳ bậc cha mẹ nào cũng trải qua. Trẻ con giống như một trang giấy trắng, được tô đen, bồi hồng và phát triển theo đúng những gì chúng trông thấy và trải qua. Vì vậy, việc giáo dục và nuôi dạy con cái từ khi còn nhỏ là rất quan trọng.</p>
+                  <p>Phương pháp giao tiếp siêu tốc kiểu Mỹ, dễ học, dễ nói, dễ thành công.</p>
 
-                  <p>Có rất nhiều phụ huynh phàn nàn về việc không thể nói chuyện được với con khi con lớn. Trước hết, hãy làm bạn với con, lắng nghe con, từ đó con sẽ lắng nghe mình.</p>
+                  <p>Tiếng Anh hiện nay được xem là &nbsp;ngôn ngữ chung của thế giới, vì vậy ngày càng nhiều người Việt đầu tư học tiếng Anh.&nbsp;</p>
 
-                  <p>Khóa học <strong>“19 Tuyệt chiêu nuôi dạy con thành tài”</strong> của <strong>Diễn giả Đào Ngọc Cường</strong> sẽ tiết lộ cho Bạn – các bận cha mẹ, thầy cô những bí quyết để trở thành những người bạn, người đồng hành để tư vấn, hướng dẫn, hỗ trợ cho con sống có mục tiêu, quan tâm yêu thương gia đình hơn.</p>
+                  <p>Học tiếng Anh bắt đầu từ đâu?</p>
 
-                  <p><strong>Bạn sẽ biết cách:</strong></p>
+                  <p><img alt="" src="https://unica.vn/lap-trinh-android-tu-co-ban-den-thanh-thao"><a href="https://unica.vn/lap-trinh-android-tu-co-ban-den-thanh-thao"><img alt="" src="https://unica.vn/lap-trinh-android-tu-co-ban-den-thanh-thao"></a></p>
 
-                  <ul>
-                    <li>Thông qua những quan sát, giúp phát hiện ra những điểm mạnh, sở trường của con để giúp con phát huy, thấu hiểu con</li>
-                    <li>Lý giải những hành động của trẻ mà bạn không thể hiểu nổi.</li>
-                    <li>Giúp cha mẹ tìm ra tiếng nói chung với con cái trong độ tuổi phát triển thay đổi về tâm sinh lý.</li>
-                    <li>Tránh được những sai lầm của cha mẹ trong quá trình nuôi dạy con</li>
-                    <li>Hiểu được đam mê, sở trường, sở thích, năng khiếu của con để có phương pháp giáo dục phù hợp, định hướng tương lai nghề nghiệp cho con sau này.</li>
-                    <li>Giải quyết tình trạng biếng ăn của trẻ. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</li>
-                  </ul>
+                  <p>Bạn là những đối tượng mất căn bản tiếng Anh, mất gốc tiếng Anh?</p>
+
+                  <p>Bạn đã quá chán nản với việc học tiếng Anh nhiều năm chưa tiến bộ?</p>
+
+                  <p>Những điều bạn băn khoăn sẽ được xua tan ngay khi bạn đăng ký khóa học của Unica, khóa học sẽ giúp bạn khắc phục tất cả khó khăn để vực dậy, khơi nguồn niềm đam mê với TIẾNG ANH. Khóa học cho bạn biết được cách học tiếng Anh đúng cách. Các bạn sẽ được nhập vai vào các tình huống tiếng Anh giao tiếp hết sức thú vị thực tế hàng ngày.</p>
+
+                  <p>Lộ trình học <strong>“Tiếng Anh cho người hoàn toàn mất gốc”</strong> của Giảng viên Ruby Thảo Trần giao tiếp cùng phương pháp phản xạ truyền cảm hứng sẽ giúp bạn nâng cao trình độ một cách nhanh chóng và hiệu quả, bạn sẽ hoàn toàn tự tin với trình độ tiếng Anh giao tiếp mới của bản thân đấy! &nbsp;</p>
                 </div>
               </div>
               <div class="u-course-teacher tab-content" id="u-course-teacher">
                 <h3>Thông tin giảng viên</h3>
                 <div class="uct-left">
-                  <div class="uct-ava-gv"><img class="lazy" align="" src="https://unica.vn/uploads/Thaoptt/August52016405pm_dao-ngoc-cuong_thumb.jpg" style=""></div>
+                  <div class="uct-ava-gv"><img class="lazy" align="" src="https://unica.vn/uploads/nguyenthiDieuLinh/October72016904am_th-s-ruby-thao-tran_thumb.jpg" style=""></div>
                   <div class="uct-rate-gv">
                     <ul>
                       <li>
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span>1154</span> học viên
+                        <span>7367</span> học viên
                       </li>
-                      <li><i class="fa fa-play-circle" aria-hidden="true"></i> <span>8</span> khóa học</li>
+                      <li><i class="fa fa-play-circle" aria-hidden="true"></i> <span>2</span> khóa học</li>
                     </ul>
                   </div>
                 </div>
                 <div class="uct-right">
-                  <div class="uct-name-gv"><a target="_blank" href="https://unica.vn/teacher/dao-ngoc-cuong">Đào Ngọc Cường</a></div>
-                  <div class="uct-des-gv">CEO Đánh Thức Tiềm Năng Việt. </div>
+                  <div class="uct-name-gv">
+                    <a target="_blank" href="https://unica.vn/teacher/th-s-ruby-thao-tran" id="teacher-name"></a>
+                  </div>
+                  <div class="uct-des-gv">Thạc sỹ Tiếng anh</div>
                   <div class="uct-more-gv">
-                    <p>Diễn giả <strong>Đào Ngọc Cường</strong>&nbsp;là&nbsp;Chủ tịch HĐQT, Giám đốc Công ty cổ phần đào tạo đánh thức tiềm năng Việt</p>
+                    <p><strong>Ruby Thảo Trần</strong> nhận bằng thạc sỹ Lý Luận và phương pháp giảng dạy tiếng Anh của Southern Queensland Australia University</p>
 
-                    <p>Chuyên gia đào tạo hàng đầu Việt Nam về phát triển con người và tạo động lực.</p>
+                    <p>Cô có trên 7 năm kinh nghiệm giảng dạy tại các ngôi trường danh tiếng như New York center, Úc châu, Âu Mỹ, Úc Anh.</p>
 
-                    <p>Là đại sứ thương hiệu cho thuốc cai nghiện Bông Sen (Thuốc cai nghiện duy nhất Việt Nam trên thế giới).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p>Đồng thời <em>Ruby Thảo Trần</em> cũng là người thành lập ra cơ sở học ngoại ngữ tại nhà KungFu English - Ruby's House với hơn 31 khóa học và hơn 3000 học viên đã tham gia học tính đến thời điểm hiện tại.</p>
 
-                    <p>Ông đã đào tạo, chia sẻ cho hàng chục ngàn người mỗi năm cho nhiều đối tượng trong cả nước cũng như các nước Campuchia, Hongkong, Singapo, Malaysia… Nhiều tập đoàn lớn, Doanh nghiệp, Hội doanh nhân, các trường Đại học, Cao đẳng, THPT, THCS, Tiểu học, Mầm non trong cả nước.</p>
-
-                    <p>Nhiều báo đài phỏng vấn đưa tin và mời tham gia tư vấn các chương trình trên truyền hình như báo: Tuổi trẻ, pháp luật, phụ nữ, Doanh nhân và thương hiệu, Thương gia thị trường, Tạp chí tuyền hình….Đài truyền hình Hà Nội, Thanh Hóa, VTC, VTV…</p>
-
-                    <p>Ông được cộng đồng đánh giá là một diễn giả có lối diễn thuyết đặc biệt, thân thiện, dễ hiểu, dễ áp dụng. Luôn chiếm được trái tim của người nghe. Là tấm gương sáng cho thế hệ trẻ học tập noi theo.</p>
+                    <p>Giúp cho rất nhiều các bạn học viên sở hữu điểm cao trong các kỳ thi Anh văn TOEIC, TOEFL, IELTS… cũng như khả năng giao tiếp của những bạn đã được cô đào tạo cải thiện tốt hơn trước rất nhiều.&nbsp;</p>
                   </div>
                 </div>
               </div>
-              <div class="u-lesson tab-content" id="u-lesson-content">
-                <div class="u-lesson-video">
+              <div class="u-lesson-content tab-content" id="u-lesson-content">
+                <div class="u-lesson-video" id="u-lesson-video">
+                  <div class="lesson-video-header">
+                    <h2 id="lesson-name"></h2>
+                    <p id="lesson-description"></p>
+                  </div>
+                  <iframe id="lesson-video-frame" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
               </div>
               <div class="u-course-test tab-content" id="u-course-test">
@@ -207,119 +226,18 @@
                   <h2>Bài kiểm tra</h2>
                   <p class="u-test-description">Tự đánh giá bạn đã hiểu bài học</p>
                 </div>
-                <div id="list-question">
-                  <div class="u-course-test-question">
-                    <div class="question">
-                      Gia đình bạn có bao nhiêu thành viên
-                    </div>
-                    <div class="answers">
-                      <label class="answer">
-                        1
-                        <input type="radio" checked="true" name="answer">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        2
-                        <input type="radio" name="answer">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        3
-                        <input type="radio" name="answer">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        4
-                        <input type="radio" name="answer">
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="u-course-test-question">
-                    <div class="question">
-                      Gia đình bạn có bao nhiêu thành viên
-                    </div>
-                    <div class="answers">
-                      <label class="answer">
-                        1
-                        <input type="radio" checked="true" name="answer3">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        2
-                        <input type="radio" name="answer3">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        3
-                        <input type="radio" name="answer3">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        4
-                        <input type="radio" name="answer3">
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="u-course-test-question">
-                    <div class="question">
-                      Gia đình bạn có bao nhiêu thành viên
-                    </div>
-                    <div class="answers">
-                      <label class="answer">
-                        1
-                        <input type="radio" checked="true" name="answer1">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        2
-                        <input type="radio" name="answer1">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        3
-                        <input type="radio" name="answer1">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        4
-                        <input type="radio" name="answer1">
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="u-course-test-question">
-                    <div class="question">
-                      Gia đình bạn có bao nhiêu thành viên
-                    </div>
-                    <div class="answers">
-                      <label class="answer">
-                        1
-                        <input type="radio" checked="true" name="answer2">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        2
-                        <input type="radio" name="answer2">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        3
-                        <input type="radio" name="answer2">
-                        <span class="checkmark"></span>
-                      </label>
-                      <label class="answer">
-                        4
-                        <input type="radio" name="answer2">
-                        <span class="checkmark"></span>
-                      </label>
-                    </div>
-                  </div>
+                <div id="list-questions">
                 </div>
                 <div class="submit-answers">
-                  <button type="submit">Gửi câu trả lời</button>
+                  <button id="btn-submit-answers">Gửi câu trả lời</button>
                 </div>
+              </div>
+              <div class="u-course-test-result" id="u-course-test-result">
+                <div class="top-stripe"></div>
+                <h2>Kết quả</h2>
+                <p>Số lượng câu hỏi: <span id="number-questions"></span></p>
+                <p>Số câu trả lời đúng: <span id="number-correct-answers"></span></p>
+                <p class="redo-link" id="redo-test">Làm lại bài kiểm tra</p>
               </div>
             </div>
           </div>
@@ -355,9 +273,9 @@
             </ul>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
-            <h4>Về Unica</h4>
+            <h4>Về SPSLO</h4>
             <ul>
-              <li><a href="/gioi-thieu">Giới thiệu về Unica</a></li>
+              <li><a href="/gioi-thieu">Giới thiệu về SPSLO</a></li>
               <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
               <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
               <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
@@ -382,7 +300,7 @@
           </div>
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
             <span id="social-connect">
-              <h4>Kết nối với Unica</h4>
+              <h4>Kết nối với SPSLO</h4>
               <ul>
                 <li class="smedia-01">
                   <a href="https://www.facebook.com/profile.php?id=100012146472728">
@@ -419,7 +337,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-            <p>© iNET - Học viện Online Unica - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+            <p>© iNET - Học viện Online SPSLO - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
           </div>
         </div>
       </div>

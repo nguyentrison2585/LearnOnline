@@ -311,11 +311,12 @@ ol, ul {
 }
 
 .unica-reg-acc {
-  border: 1px solid #555;
+  border: 1px solid #007bff;
   padding: 9px 19px;
   border-radius: 3px;
   display: inline-block;
-  color: #555;
+  color: #fff;
+  background-color: #007bff;
 }
 
 .unica-log-acc {
@@ -1001,8 +1002,12 @@ ol, ul {
   vertical-align: middle;
 }
 
+.tab-detail li ul li {
+  padding-right: 0;
+}
+
 .tab-detail li ul li a{
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .tab-detail li ul li:last-child {
@@ -1162,13 +1167,14 @@ ol, ul {
 }
 
 /* course test tab */
-.u-course-test {
+.u-course-test, .u-lesson-content {
   border-radius: 3px;
   display: inline-block;
   width: 100%;
 }
 
-.u-course-test-header, .u-course-test-question {
+
+.u-course-test-header, .u-course-test-question, .u-lesson-content, .u-course-test-result {
   background-color: #fff;
   border: 1px solid #dadce0;
   border-radius: 8px;
@@ -1179,7 +1185,7 @@ ol, ul {
   margin-bottom: 10px;
 }
 
-.u-course-test-header h2 {
+.u-course-test-header h2, .lesson-video-header h2, .u-course-test-result h2 {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -1188,6 +1194,30 @@ ol, ul {
   padding-bottom: 10px;
 }
 
+.u-course-test-result p {
+  font-size: 20px;
+}
+
+.u-course-test-result p span {
+  font-weight: bold;
+  color: #000;
+}
+
+.u-course-test-result .redo-link {
+  margin-top: 20px;
+  text-decoration: underline;
+  color: #1a73e8;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.u-course-test-result {
+  display: none;
+}
+
+.lesson-video-header {
+  margin-bottom: 30px;
+}
 .u-test-description {
   font-size: 18px;
 }
@@ -1223,19 +1253,19 @@ ol, ul {
 }
 
 .answer input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .checkmark {
-    position: absolute;
-    top: 2px;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    border: 2px solid #333333;
-    border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #333333;
+  border-radius: 50%;
 }
 
 .answer input:checked ~ .checkmark {
@@ -1243,31 +1273,36 @@ ol, ul {
 }
 
 .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+  content: "";
+  position: absolute;
+  display: none;
 }
 
 .checkmark:after {
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #f26c4f;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f26c4f;
 }
 
 .answer input:checked ~ .checkmark:after {
-    display: block;
+  display: block;
 }
 
 .submit-answers button {
-    padding: 10px 20px;
-    background-color: #f26c4f;
-    color: #fff;
-    border: 1px solid #f26c4f;
-    border-radius: 5px;
-    font-size: 18px;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #f26c4f;
+  color: #fff;
+  border: 1px solid #f26c4f;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.submit-answers button:hover {
+  background-color: #f35b3a;
 }
 
 .tab-content {

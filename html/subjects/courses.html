@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trang chủ</title>
+  <title></title>
   <link rel="stylesheet" type="text/css" href="../../css/user.css">
   <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,7 +23,7 @@
           <div class="row col-width-lg">
             <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
               <div class="unica-menu-cate">
-                <a href="/">
+                <a href="../static_pages/home.html">
                   <img src="../../images/logo.png">
                 </a>
               </div>
@@ -55,7 +55,7 @@
           <li>
             <a href="../static_pages/home.html">Trang chủ</a>
           </li>
-          <li class="active">Ngoại ngữ</li>
+          <li class="active" id="subject-name"></li>
         </ol>
       </div>
     </div>
@@ -66,48 +66,7 @@
             <section>
               <div class="u-cate-list">
                 <p style="font-size: 18px;font-weight: bold;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;padding-bottom: 5px;">Danh mục khóa học</p>
-                <ul>
-                  <li>
-                    <a title="Khóa học Tiếng Anh, Tiếng Nhật, Tiếng Hàn, Tiếng Trung Giao Tiếp" href="/course/ngoai-ngu" class="active">
-                      <i class="fas fa-language" aria-hidden="true"></i> Ngoại ngữ
-                    </a>
-                  </li>
-                  <li>
-                    <a title="Khóa học Marketing thực chiến từ những giảng viên hàng đầu Việt Nam" href="/course/marketing"><i class="fas fa-chart-line" aria-hidden="true"></i> Marketing</a>
-                  </li>
-                  <li>
-                    <a title="69+ Khóa học tin học văn phòng từ cơ bản đến nâng cao" href="/course/tin-hoc-van-phong"><i class="fas fa-desktop" aria-hidden="true"></i> Tin học văn phòng</a>
-                  </li>
-                  <li>
-                    <a title="Các khóa học thiết kế từ cơ bản đến chuyên sâu" href="/course/thiet-ke"><i class="fas fa-paint-brush" aria-hidden="true"></i> Thiết kế</a>
-                  </li>
-                  <li>
-                    <a title="Các khóa học kinh doanh và khởi nghiệp để gia tăng doanh số hiệu quả" href="/course/kinh-doanh-khoi-nghiep"><i class="fas fa-rocket" aria-hidden="true"></i> Kinh doanh - Khởi nghiệp</a>
-                  </li>
-                  <li>
-                    <a title="Khóa học phát triển cá nhân đỉnh cao để cải thiện cuộc sống và sự nghiệp" href="/course/phat-trien-ca-nhan"><i class="fas fa-lightbulb" aria-hidden="true"></i> Phát triển cá nhân</a>
-                  </li>
-                  <li>
-                    <a title="Khóa học Sales, bán hàng từ các chuyên gia Marketing hàng đầu Unica" href="/course/sales-ban-hang"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Sales, bán hàng</a>
-                  </li>
-                  <li>
-                    <a title="Học Công Nghệ Thông Tin Online Cùng Chuyên Gia Hàng Đầu Trong Ngành" href="/course/cong-nghe-thong-tin"><i class="fas fa-code" aria-hidden="true"></i> Công nghệ thông tin</a>
-                  </li>
-                  <li>
-                    <a title="Các khóa học nâng các kiến thức sức khỏe và giới tính cho người Việt" href="/course/suc-khoe-gioi-tinh"><i class="fas fa-heartbeat" aria-hidden="true"></i> Sức khỏe - Giới tính</a>
-                  </li>
-                  <li>
-                    <a title="Khóa học phong cách sống giúp thành công hơn trong cuốc sống" href="/course/phong-cach-song"><i class="fas fa-utensils" aria-hidden="true"></i> Phong cách sống</a>
-                  </li>
-                  <li>
-                    <a title="Các khóa học nuôi dạy con đúng cách theo khoa học" href="/course/nuoi-day-con"><i class="fas fa-child" aria-hidden="true"></i> Nuôi dạy con </a>
-                  </li>
-                  <li>
-                    <a title="Các khoá học về hôn nhân, giữ gìn gia đình hạnh phúc" href="/course/hon-nhan-gia-dinh"><i class="fas fa-users" aria-hidden="true"></i> Hôn nhân &amp; Gia đình</a>
-                  </li>
-                  <li>
-                    <a title="Các khóa học nhiếp ảnh, dựng phim từ chuyên gia trên Unica" href="/course/nhiep-anh-dung-phim"><i class="fas fa-camera" aria-hidden="true"></i> Nhiếp ảnh, dựng phim</a>
-                  </li>
+                <ul id="subjects-list">
                 </ul>
               </div>
             </section>
@@ -157,9 +116,9 @@
             </ul>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
-            <h4>Về Unica</h4>
+            <h4>Về SPSLO</h4>
             <ul>
-              <li><a href="/gioi-thieu">Giới thiệu về Unica</a></li>
+              <li><a href="/gioi-thieu">Giới thiệu về SPSLO</a></li>
               <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
               <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
               <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
@@ -184,7 +143,7 @@
           </div>
           <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
             <span id="social-connect">
-              <h4>Kết nối với Unica</h4>
+              <h4>Kết nối với SPSLO</h4>
               <ul>
                 <li class="smedia-01">
                   <a href="https://www.facebook.com/profile.php?id=100012146472728">
@@ -221,7 +180,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-            <p>© iNET - Học viện Online Unica - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+            <p>© iNET - Học viện Online SPSLO - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
           </div>
         </div>
       </div>
