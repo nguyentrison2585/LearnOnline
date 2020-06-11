@@ -33,8 +33,8 @@ $(document).ready(function() {
       console.log(e);
     },
     success: function(data) {
-      var subject_name = `<a href="courses.html?subjectId=${data.id}>${data.subjectName}</a>`;
-      $('#subject-name').append(subject_name);
+      $('#subject-name').html(data.subjectName);
+      $('#subject-link').attr('href', 'courses.html?subjectId=' + data.id);
       console.log(data);
     },
     type: 'GET'

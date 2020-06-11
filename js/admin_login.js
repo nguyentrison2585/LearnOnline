@@ -22,11 +22,14 @@ $(document).ready(function() {
       },
       dataType: 'json',
       error: function(e) {
-        $('#admin-login-alert').html('Sai tên đang nhập hoặc mật khẩu');
+        console.log(e.message);
+        $('#admin-login-alert').html('Username or password incorrect!');
         $('#admin-login-alert').addClass('alert-danger');
       },
       success: function(data) {
-        window.open('darkboard.html');
+        sessionStorage.setItem('admin_token', data.token);
+        sessionStorage.setItem('setupTimeAdmin', new Date().getTime());
+        window.location.href = 'dashboard.html';
       }
     });
   });

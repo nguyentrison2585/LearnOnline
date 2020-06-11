@@ -26,16 +26,16 @@ $(document).ready(function() {
     url: 'https://teaching-online-lms.herokuapp.com/api/user/subjects',
     dataType: 'json',
     error: function(e) {
-      $('#lesson-info').html('<p>An error has occurred</p>');
+      alert('Đã có lỗi xảy ra khi lấy dữ liệu');
       console.log(e);
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
         var subject_block = `<li>
-                    <a title="Khóa học ${data[i].name}" data-id="${data[i].id}" class="subject-link" href="courses.html?subjectId=${data[i].id}">
-                      <i class="fas fa-language" aria-hidden="true"></i> ${data[i].name}
-                    </a>
-                  </li>`
+          <a title="Khóa học ${data[i].name}" data-id="${data[i].id}" class="subject-link" href="courses.html?subjectId=${data[i].id}">
+            <i class="fas fa-language" aria-hidden="true"></i> ${data[i].name}
+          </a>
+        </li>`
         $('#subjects-list').append(subject_block);
       }
       subjects = $('.subject-link');
@@ -56,7 +56,7 @@ $(document).ready(function() {
     dataType: 'json',
     data: {subjectId: subjectId.subjectId[0]},
     error: function(e) {
-      alert('<p>Đã có lỗi xảy ra khi lấy dữ liệu</p>');
+      alert('Đã có lỗi xảy ra khi lấy dữ liệu');
       console.log(e);
     },
     success: function(data) {

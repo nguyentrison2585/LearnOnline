@@ -8,4 +8,9 @@ $(document).ready(function() {
       }
     }
   });
+
+  $('#admin-logout').click(function() {
+    sessionStorage.removeItem('admin_token');
+    sessionStorage.removeItem('setupTime');
+  })
 });

@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Danh sách khóa học</title>
+  <title>Đăng nhập</title>
   <link rel="stylesheet" type="text/css" href="../../../css/style.css">
   <link href="../../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../../../js/admin.js"></script>
   <script type="text/javascript" src="../../../js/admin_login.js"></script>
 </head>
 <body class="animsition" style="animation-duration: 900ms; opacity: 1;">
@@ -26,11 +25,11 @@
               </div>
               <div class="form-group">
                 <label>User name</label>
-                <input class="au-input au-input--full" type="text" id="username" name="username" placeholder="Email">
+                <input class="au-input au-input--full" type="text" required="true" id="username" name="username" placeholder="Username">
               </div>
               <div class="form-group">
                 <label>Password</label>
-                <input class="au-input au-input--full" type="password" id="password" name="password" placeholder="Password">
+                <input class="au-input au-input--full" type="password" required="true" id="password" name="password" placeholder="Password">
               </div>
               <div class="login-checkbox">
                 <label>
@@ -40,12 +39,12 @@
                   <a href="#">Forgotten Password?</a>
                 </label>
               </div>
-              <button class="au-btn au-btn--block au-btn--green m-b-20" id="login-btn" type="submit">sign in</button>
+              <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
             </form>
             <div class="register-link">
               <p>
                 Don't you have account?
-                <a href="#">Sign Up Here</a>
+                <a href="signup.html">Sign Up Here</a>
               </p>
             </div>
           </div>

@@ -3,63 +3,195 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Trang chủ</title>
-  <link rel="stylesheet" type="text/css" href="../../css/style.css">
-  <link href="../../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" type="text/css" href="../../css/user.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(function(){
-      $("#includedHeader").load("../parts/header.html");
-    });
-    $(function(){
-      $("#includedFooter").load("../parts/footer.html");
-    });
-  </script>
+  <script type="text/javascript" src="../../js/user_login.js"></script>
 </head>
 <body>
-  <div id="includedHeader"></div>
+  <header>
+    <div class="clearfix" style="position: relative;">
+      <div class="unica-home-menutop hidden-xs" style="position: absolute;">
+        <div class="container">
+          <div class="row col-width-lg">
+            <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
+              <div class="unica-menu-cate">
+                <a href="../static_pages/home.html">
+                  <img src="../../images/logo.png">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
+              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+                <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+                <button type="submit" class="btn unica-btn-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
+              <ul class="unica-acc-zone">
+                <li><a class="unica-reg-acc" href="/login">Đăng nhập</a></li>
+                <li><a class="unica-log-acc" href="/register">Đăng ký</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="container">
     <div class="login-wrap">
       <div class="loginpage-left-banner">
         <img src="../../images/login-left-banner.png" alt="" class="img-responsive loginpage-left-banner__img">
       </div>
       <div class="loginpage-form">
-        <div class="loginpage-form-wrap form-login">
-          <h3 class="text-center loginpage-form__title">Đăng nhập</h3>
-          <div>
-            <div class="form-group">
-              <input name="email" placeholder="Tên đăng nhập hoặc Email" type="text" class="form-control loginpage-form__input">
+        <form action="" id="user-login-form" method="post">
+          <div class="loginpage-form-wrap form-login">
+            <h3 class="text-center loginpage-form__title">Đăng nhập</h3>
+            <div class="alert" id="user-login-alert" role="alert">
             </div>
-            <div class="form-group has-eye">
-              <input id="loginFormPassword" type="password" placeholder="Mật khẩu" class="form-control loginpage-form__input">
-              <div class="eye">
-                <img src="../../images/ic_eye0.png" alt="" class="img-responsive">
+            <div>
+              <div class="form-group">
+                <input name="username" id="username" placeholder="Tên đăng nhập" type="text" class="form-control loginpage-form__input" required>
               </div>
-            </div>
-            <div style="margin-bottom: 15px;">
-              <div id="recaptcha-loginForm">
+              <div class="form-group has-eye">
+                <input id="password" type="password" placeholder="Mật khẩu" class="form-control loginpage-form__input" required>
+                <div class="eye">
+                  <img src="../../images/ic_eye0.png" alt="" class="img-responsive">
+                </div>
               </div>
-            </div>
-            <div class="form-group clearfix">
-              <div class="loginpage-form__remember float-left">
-                <label class="loginpage-form__remember-checkbox">
-                  Nhớ mật khẩu
-                  <input type="checkbox" checked="checked">
-                  <span class="checkmark"></span>
+              <div style="margin-bottom: 15px;">
+                <div id="recaptcha-loginForm">
+                </div>
+              </div>
+              <div class="form-group clearfix">
+                <div class="loginpage-form__remember float-left">
+                  <label class="loginpage-form__remember-checkbox">
+                    Nhớ mật khẩu
+                    <input type="checkbox" checked="checked">
+                    <span class="login-checkmark"></span>
+                  </label>
+                </div>
+                <div class="forgetpass">
+                  <a href="forgot_password.php">
+                    Quên mật khẩu?
+                  </a>
+                </div>
+              </div>
+              <div class="user-role">
+                <label class="radio-inline">
+                  <input type="radio" name="userrole" checked>Học viên
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="userrole">Giáo viên
                 </label>
               </div>
+              <button type="submit" class="btn loginpage-form__button-submit">Đăng nhập</button>
             </div>
-            <button type="submit" class="btn loginpage-form__button-submit">Đăng nhập</button>
-            <div class="forgetpass">
-              <a href="forgot_password.php">
-                Bạn quên kí danh hoặc mật khẩu?
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div id="footer2">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdl">
+            <span class="logo-footer">
+              <a class="navbar-brand" href="/"><img class="img-responsive" src="../..//images/logo.png"></a>
+            </span>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span style="color: white;">122 Vĩnh Tuy, Hai Bà Trưng, Hà Nội</span>
+              </li>
+              <li>
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <a href="tel:0904886095">035 800 3347</a>
+              </li>
+              <li>
+                <i class="far fa-envelope" aria-hidden="true"></i>
+                <span style="color: white;">nguyentrison.33.10a3@gmail.com </span>
+              </li>
+              <li>
+                <i class="far fa-clock" aria-hidden="true"></i>
+                <span style="color: white;">8:00 - 22:00 </span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Về SPSLO</h4>
+            <ul>
+              <li><a href="/gioi-thieu">Giới thiệu về SPSLO</a></li>
+              <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
+              <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
+              <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
+              <li><a href="/kichhoat">Kích hoạt khóa học</a></li>
+              <li><a href="/blog">Góc chia sẻ</a></li>
+              <li><a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+            <h4>Hợp tác liên kết</h4>
+            <ul>
+              <li><a href="/teacher">Đăng ký giảng viên</a></li>
+              <li><a href="/daily">Đăng ký đại lý</a></li>
+              <li>
+                <a href="https://edubit.vn" target="_blank" rel="nofollow">Giải pháp e-learning</a>
+              </li>
+              <li><a href="https://acabiz.vn" target="_blank">Đào tạo doanh nghiệp</a></li>
+              <li><a href="http://job.unica.vn/" target="_blank" rel="nofollow">Tuyển dụng nhân tài</a></li>
+              <li><a href="/the">Thẻ học online</a></li>
+              <li><a href="/affiliate">Affiliate</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
+            <span id="social-connect">
+              <h4>Kết nối với SPSLO</h4>
+              <ul>
+                <li class="smedia-01">
+                  <a href="https://www.facebook.com/profile.php?id=100012146472728">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-02">
+                  <a href="https://www.instagram.com/leeg_son/">
+                    <i class="fab fa-instagram-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-03">
+                  <a href="https://twitter.com/explore">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                </li>
+                <li class="smedia-04">
+                  <a href="https://www.google.com/">
+                    <i class="fab fa-google-plus-square"></i>
+                  </a>
+                </li>
+              </ul>
+            </span>
+            <span class="dkct">
+              <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27171" target="_blank" rel="nofollow">
+                <img src="../../images/dkkd-vlance.png">
               </a>
-            </div>
+            </span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="includedFooter"></div>
+    <div id="footer3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+            <p>© iNET - Học viện Online SPSLO - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
