@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lịch giảng dạy</title>
+  <link rel="stylesheet" type="text/css" href="../../css/user.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/check_user_session.js"></script>
+  <script type="text/javascript" src="../../js/check_user.js"></script>
+  <script type="text/javascript" src="../../js/user.js"></script>
+  <script type="text/javascript" src="../../js/teaching_schedule.js"></script>
+</head>
+<body>
+  <header>
+    <div class="clearfix" style="position: relative;">
+      <div class="unica-home-menutop hidden-xs" style="position: absolute;">
+        <div class="container">
+          <div class="row col-width-lg">
+            <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
+              <div class="unica-menu-cate">
+                <a href="home.html">
+                  <img src="../../images/logo.png">
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
+              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+                <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+                <button type="submit" class="btn unica-btn-search">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </form>
+            </div>
+            <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
+              <ul class="unica-acc-zone" id="user-account-zone">
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="hidden-xs" style="margin-top: 62px;"></div>
+  <main>
+    <div class="container-fluid bg-br" style="padding:15px 0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-4 u-list-leftbar hidden-xs ">
+            <section>
+              <div class="u-cate-list user-nav">
+                <p>Khóa học của tôi</p>
+                <ul id="courses-list">
+
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-content" style="">
+            <div class="u-course-test tab-content show-inline" id="u-course-test">
+              <div class="u-course-test-header">
+                <div class="top-stripe"></div>
+                <h2>Lịch giảng dạy</h2>
+                <p class="u-test-description">Khóa học Lập trình C</p>
+              </div>
+              <div id="list-lessons">
+                <div class="quizitem normal open">
+                  <div class="quizitem-heading clear">
+                    <div class="right">
+                      <span class="indicator"><i class="fa fa-angle-down expand"></i></span>
+                    </div>
+                    <p class="tt-store">Bài 1: Giới thiệu về lập trình C</p>
+                  </div>
+                  <div class="quizitem-body show">
+                    <div class="lesson-description">
+                      Bài học sẽ được giảng dạy vào 9:00 18-6-2020
+                    </div>
+                    <form id="update-url-form">
+                      <div class="form-row">
+                        <div class="lb">Đường dẫn tới video live stream</div>
+                        <textarea class="form-control quiz-content-input" id="embbed-link"placeholder="Mã nhúng < >" rows="10" maxlength="800" required=""></textarea>
+                        <div class="update-question">
+                          <button type="submit" class="btn update-question-btn">
+                            Cập nhật
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="form-row answer-wrap">
+                      <div class="lb clear">Xem trước video</div>
+                      <div class="preview-video" id="preview-block">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div id="footer2">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdl">
+              <span class="logo-footer">
+                <a class="navbar-brand" href="/"><img class="img-responsive" src="../..//images/logo.png"></a>
+              </span>
+              <ul>
+                <li>
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                  <span style="color: white;">122 Vĩnh Tuy, Hai Bà Trưng, Hà Nội</span>
+                </li>
+                <li>
+                  <i class="fas fa-phone" aria-hidden="true"></i>
+                  <a href="tel:0904886095">035 800 3347</a>
+                </li>
+                <li>
+                  <i class="far fa-envelope" aria-hidden="true"></i>
+                  <span style="color: white;">nguyentrison.33.10a3@gmail.com </span>
+                </li>
+                <li>
+                  <i class="far fa-clock" aria-hidden="true"></i>
+                  <span style="color: white;">8:00 - 22:00 </span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+              <h4>Về SPSLO</h4>
+              <ul>
+                <li><a href="/gioi-thieu">Giới thiệu về SPSLO</a></li>
+                <li><a href="/faq" rel="nofollow">Câu hỏi thường gặp</a></li>
+                <li><a href="/dieu-khoan-dich-vu.html" rel="nofollow">Điều khoản dịch vụ</a></li>
+                <li><a href="/huong-dan-thanh-toan.html" rel="nofollow">Hướng dẫn thanh toán</a></li>
+                <li><a href="/kichhoat">Kích hoạt khóa học</a></li>
+                <li><a href="/blog">Góc chia sẻ</a></li>
+                <li><a href="/chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr pdm des-unica">
+              <h4>Hợp tác liên kết</h4>
+              <ul>
+                <li><a href="/teacher">Đăng ký giảng viên</a></li>
+                <li><a href="/daily">Đăng ký đại lý</a></li>
+                <li>
+                  <a href="https://edubit.vn" target="_blank" rel="nofollow">Giải pháp e-learning</a>
+                </li>
+                <li><a href="https://acabiz.vn" target="_blank">Đào tạo doanh nghiệp</a></li>
+                <li><a href="http://job.unica.vn/" target="_blank" rel="nofollow">Tuyển dụng nhân tài</a></li>
+                <li><a href="/the">Thẻ học online</a></li>
+                <li><a href="/affiliate">Affiliate</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 hei2 pdr app-unica">
+              <span id="social-connect">
+                <h4>Kết nối với SPSLO</h4>
+                <ul>
+                  <li class="smedia-01">
+                    <a href="https://www.facebook.com/profile.php?id=100012146472728">
+                      <i class="fab fa-facebook-square"></i>
+                    </a>
+                  </li>
+                  <li class="smedia-02">
+                    <a href="https://www.instagram.com/leeg_son/">
+                      <i class="fab fa-instagram-square"></i>
+                    </a>
+                  </li>
+                  <li class="smedia-03">
+                    <a href="https://twitter.com/explore">
+                      <i class="fab fa-twitter-square"></i>
+                    </a>
+                  </li>
+                  <li class="smedia-04">
+                    <a href="https://www.google.com/">
+                      <i class="fab fa-google-plus-square"></i>
+                    </a>
+                  </li>
+                </ul>
+              </span>
+              <span class="dkct">
+                <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=27171" target="_blank" rel="nofollow">
+                  <img src="../../images/dkkd-vlance.png">
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer3">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+              <p>© iNET - Học viện Online SPSLO - Khóa học trực tuyến dành cho người đi làm - Cổng kết nối Chuyên gia với Học viên</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  </html>

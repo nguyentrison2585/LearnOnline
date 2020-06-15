@@ -101,8 +101,6 @@ $(document).ready(function() {
             $('#lesson-name').html(data.lessonName);
             $('#lesson-description').html(data.description);
             $('#lesson-video-frame').attr('src', data.liveStreamUrl);
-            $('#lesson-video-frame').attr('width', '100%');
-            $('#lesson-video-frame').attr('height', '450px');
             console.log(data);
           },
           type: 'GET'

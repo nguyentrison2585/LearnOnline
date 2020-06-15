@@ -8,6 +8,9 @@ $(document).ready(function() {
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
+      swal("Lấy dữ liệu không thành công!", {
+        icon: "warning",
+      });
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
@@ -58,7 +61,8 @@ $(document).ready(function() {
         })
         .then((willDelete) => {
           if (willDelete) {
-            var id = $(this).parent().parent().parent().attr('data-id');
+            var btn = $(this);
+            var id = btn.parent().parent().parent().attr('data-id');
             console.log(id);
             $.ajax({
               url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-subject',
@@ -72,13 +76,19 @@ $(document).ready(function() {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                swal("You cann't delete this subject!");
+                swal("Error when delete the subject!", {
+                  icon: "warning",
+                });
               },
               success: function(data) {
                 swal("Poof! The subject has been deleted!", {
                   icon: "success",
                 });
-                $(this).parent().parent().parent().remove();
+                for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
+                  var no_cell = $('.courses-column-1')[i+1]
+                  $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                }
+                btn.parent().parent().parent().remove();
                 console.log(data);
               }
             });
@@ -120,7 +130,9 @@ $(document).ready(function() {
       dataType: 'json',
       error: function(e) {
         console.log(e.message);
-        alert('Subject name has existed!');
+        swal("Tạo mới lĩnh vực không thành công!", {
+        icon: "warning",
+      });
       },
       success: function(data) {
         var number_rows = $('.tr-shadow').length;
@@ -172,12 +184,10 @@ $(document).ready(function() {
           })
           .then((willDelete) => {
             if (willDelete) {
-              swal("Poof! The subject has been deleted!", {
-                icon: "success",
-              });
-              var id = $(this).parent().parent().parent().attr('data-id');
+              var btn = $(this);
+              var id = btn.parent().parent().parent().attr('data-id');
               $.ajax({
-                url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-course',
+                url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-subject',
                 type: 'POST',
                 headers: {
                   'Authorization': sessionStorage.getItem('admin_token')
@@ -188,10 +198,19 @@ $(document).ready(function() {
                 dataType: 'json',
                 error: function(e) {
                   console.log(e.message);
-                  alert('Subject name has existed!');
+                  swal("Error when delete the subject!", {
+                    icon: "warning",
+                  });
                 },
                 success: function(data) {
-                  $(this).parent().parent().parent().remove();
+                  swal("Poof! The subject has been deleted!", {
+                    icon: "success",
+                  });
+                  for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
+                    var no_cell = $('.courses-column-1')[i+1]
+                    $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                  }
+                  btn.parent().parent().parent().remove();
                   console.log(data);
                 }
               });
@@ -200,6 +219,9 @@ $(document).ready(function() {
             }
           });
         });
+        swal("Tạo mới lĩnh vực thành công!", {
+                  icon: "success",
+                });
       }
     });
   });
@@ -224,11 +246,16 @@ $(document).ready(function() {
       dataType: 'json',
       error: function(e) {
         console.log(e.message);
-        alert('Subject name has existed!');
+        swal("Cập nhật lĩnh vực không thành công!", {
+        icon: "warning",
+      });
       },
       success: function(data) {
         $('[data-id="' + data.id + '"] .courses-column-2').html(data.subjectName);
         $('[data-id="' + data.id + '"] .courses-column-3').html(data.description);
+        swal("Cập nhật lĩnh vực thành công!", {
+                  icon: "success",
+                });
         console.log(data);
       }
     });

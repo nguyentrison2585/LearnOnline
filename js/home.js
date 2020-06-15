@@ -56,7 +56,7 @@ $(document).ready(function() {
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
         var subject_block = `<li>
-                <a href="../subjects/courses.html?subjectId=${data[i].id}" class="u-tags-mini">
+                <a href="courses.html?subjectId=${data[i].id}" class="u-tags-mini">
                   <p>
                     <i class="fas fa-language" aria-hidden="true"></i>
                     ${data[i].name}

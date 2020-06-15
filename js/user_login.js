@@ -34,8 +34,9 @@ $(document).ready(function() {
         },
         success: function(data) {
           sessionStorage.setItem('user_token', data.token);
+          sessionStorage.setItem('user_role', 0);
           sessionStorage.setItem('setupTimeUser', new Date().getTime());
-          window.location.href = '../static_pages/home.html';
+          window.location.href = 'home.html';
         }
       });
     }
@@ -55,8 +56,9 @@ $(document).ready(function() {
         },
         success: function(data) {
           sessionStorage.setItem('user_token', data.token);
+          sessionStorage.setItem('user_role', 1);
           sessionStorage.setItem('setupTimeUser', new Date().getTime());
-          window.location.href = '../static_pages/home.html';
+          window.location.href = 'home.html';
         }
       });
     }

@@ -2044,6 +2044,8 @@ button.close {
   float: left;
   width: 100%;
   margin-top: 1px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .quizitem .quizitem-heading {

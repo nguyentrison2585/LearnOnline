@@ -3,17 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Trang chủ</title>
   <link rel="stylesheet" type="text/css" href="../../css/user.css">
   <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../../js/courses.js"></script>
-<!--   <script>
-    $(document).ready(function(){
-      $('#loadheader').load("../parts/header.html");
-      $('#loadfooter').load("../parts/footer.html");
-    });
-  </script> -->
+  <script type="text/javascript" src="../../js/check_user.js"></script>
+  <script type="text/javascript" src="../../js/user.js"></script>
+  <script type="text/javascript" src="../../js/home.js"></script>
 </head>
 <body>
   <header>
@@ -23,7 +19,7 @@
           <div class="row col-width-lg">
             <div class="col-lg-2 col-md-2 col-sm-2 cate-md">
               <div class="unica-menu-cate">
-                <a href="../static_pages/home.html">
+                <a href="">
                   <img src="../../images/logo.png">
                 </a>
               </div>
@@ -37,9 +33,7 @@
               </form>
             </div>
             <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
-              <ul class="unica-acc-zone">
-                <li><a class="unica-reg-acc" href="/login">Đăng nhập</a></li>
-                <li><a class="unica-log-acc" href="/register">Đăng ký</a></li>
+              <ul class="unica-acc-zone" id="user-account-zone">
               </ul>
             </div>
           </div>
@@ -49,40 +43,116 @@
   </header>
   <div class="hidden-xs" style="margin-top: 62px;"></div>
   <main>
-    <div class="container-fluid bg-br-2">
-      <div class="container">
-        <ol class="breadcrumb">
-          <li>
-            <a href="../static_pages/home.html">Trang chủ</a>
-          </li>
-          <li class="active" id="subject-name"></li>
-        </ol>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="slider-new" id="home-slide">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <button class="flickity-button flickity-prev-next-button previous" type="button" aria-label="Previous">
+              <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+              </svg>
+            </button>
+
+            <button class="flickity-button flickity-prev-next-button next" type="button" aria-label="Next">
+              <svg class="flickity-button-icon" viewBox="0 0 100 100">
+                <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path>
+              </svg>
+            </button>
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="dot active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" class="dot"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2" class="dot"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item has-slide-effect active" style="background: #03adc1">
+                <div>
+                  <a target="_blank" title="Mừng sinh nhật Unica 4 tuổi">
+                    <img src="../../images/banner-01.jpg" alt="Mừng sinh nhật Unica 4 tuổi">
+                  </a>
+                </div>
+              </div>
+              <div class="item has-slide-effect" style="background: #b2696f">
+                <div>
+                  <a target="_blank" title="Tin học văn phòng">
+                    <img class="lazy" alt="Tin học văn phòng" src="../../images/banner-02.png" style="">
+                  </a>
+                </div>
+              </div>
+              <div class="item has-slide-effect" style="background: #f68f14">
+                <div>
+                  <a target="_blank" title="Khóa học mới tháng 5">
+                    <img class="lazy" alt="Khóa học mới tháng 5" src="../../images/banner-04.jpg" style="">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container-fluid bg-br" style="padding:15px 0">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-3 col-sm-4 u-list-leftbar hidden-xs ">
-            <section>
-              <div class="u-cate-list">
-                <p style="font-size: 18px;font-weight: bold;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;padding-bottom: 5px;">Danh mục khóa học</p>
-                <ul id="subjects-list">
-                </ul>
-              </div>
-            </section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="unica-learn-today">
+            <h4>Hôm nay bạn muốn học gì ?</h4>
+            <ul class="unica-lt-box" id="subjects-list">
+            </ul>
           </div>
-          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-content" style="">
-            <div class="u-all-course">
-              <h1 style="font-size: 20px;font-family: inherit;line-height: 1.1;color: inherit;margin-top: 0px;">Khóa học Ngoại ngữ </h1>
-              <h3>Tất cả [ <span class="p-or"></span> <p> khóa học</p> ]</h3>
-              <style>
-                .box-teacher .slick-next:before,.box-teacher .slick-prev:before{color: #F37E65 !important;}
-              </style>
-              <section>
-                <ul id="courses-list">
-                </ul>
-              </section>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 pdm-No">
+          <div class="unica-reason">
+            <h4>Tại sao bạn nên học cùng SPSLO?</h4>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_1.png" style="">
+                </div>
+                <div class="txt-reason"> Học mọi lúc, mọi nơi
+                </div>
+              </div>
             </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_2.png" style="">
+                </div>
+                <div class="txt-reason"> Tính ứng dụng cao
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_3.png" style="">
+                </div>
+                <div class="txt-reason"> Tương tác với giảng viên
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 pdm-No">
+              <div class="reason-4">
+                <div class="img-reason">
+                  <img class="img-responsive lazy" alt="" src="../../images/reason_image_4.png" style="">
+                </div>
+                <div class="txt-reason"> Hỗ trợ 24/7
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="unica-be-teacher">
+          <div class="unica-be-teacher-txt">
+            <p>TRỞ THÀNH</p>
+            <h4>GIẢNG VIÊN SPSLO</h4>
+            <a href="/teacher">ĐĂNG KÝ NGAY</a>
           </div>
         </div>
       </div>

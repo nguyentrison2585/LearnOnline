@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var itemsmenu = $('.js-item-menu');
   $('.js-item-menu').click(function() {
+    console.log('click');
     $(this).toggleClass('show-dropdown');
     for (let i = 0; i < itemsmenu.length; i++) {
       if(itemsmenu[i] != this && itemsmenu[i].classList.contains('show-dropdown')) {
@@ -9,9 +10,10 @@ $(document).ready(function() {
     }
   });
 
-  $('#admin-logout').click(function() {
-    sessionStorage.removeItem('admin_token');
-    sessionStorage.removeItem('setupTime');
+  $('#user-logout').click(function() {
+    sessionStorage.removeItem('user_token');
+    sessionStorage.removeItem('user_role');
+    sessionStorage.removeItem('setupTimeUser');
     window.location.href = 'login.html'
   })
 });

@@ -11,6 +11,18 @@ $(document).ready(function() {
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
+        if (data[i].fullName == null) {
+          data[i].fullName = 'Chưa có';
+        }
+        if (data[i].email == null) {
+          data[i].email = 'Chưa có';
+        }
+        if (data[i].phoneNumber == null) {
+          data[i].phoneNumber = 'Chưa có';
+        }
+        if (data[i].address == null) {
+          data[i].address = 'Chưa có';
+        }
         var user_row = `<tr class="tr-shadow">
             <td class="users-column-1">${i+1}</td>
             <td class="users-column-2">${data[i].fullName}</td>

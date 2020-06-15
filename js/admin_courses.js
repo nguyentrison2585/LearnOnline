@@ -8,6 +8,9 @@ $(document).ready(function() {
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
+      swal("Lấy dữ liệu không thành công!", {
+        icon: "warning",
+      });
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
@@ -64,10 +67,8 @@ $(document).ready(function() {
         })
         .then((willDelete) => {
           if (willDelete) {
-            swal("Poof! The course has been deleted!", {
-              icon: "success",
-            });
-            var id = $(this).parent().parent().parent().attr('data-id');
+            var btn = $(this);
+            var id = btn.parent().parent().parent().attr('data-id');
             $.ajax({
               url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-course',
               type: 'POST',
@@ -80,10 +81,19 @@ $(document).ready(function() {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                alert('Subject name has existed!');
+                swal("Error when delete the course!", {
+                  icon: "warning",
+                });
               },
               success: function(data) {
-                $(this).parent().parent().parent().remove();
+                for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
+                  var no_cell = $('.courses-column-1')[i+1]
+                  $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                }
+                btn.parent().parent().parent().remove();
+                swal("Poof! The course has been deleted!", {
+                  icon: "success",
+                });
                 console.log(data);
               }
             });
@@ -104,6 +114,9 @@ $(document).ready(function() {
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
+      swal("Lấy dữ liệu không thành công!", {
+        icon: "warning",
+      });
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
@@ -123,6 +136,9 @@ $(document).ready(function() {
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
+      swal("Lấy dữ liệu không thành công!", {
+        icon: "warning",
+      });
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
@@ -169,7 +185,9 @@ $(document).ready(function() {
       dataType: 'json',
       error: function(e) {
         console.log(e.message);
-        alert('Subject name has existed!');
+        swal("Tạo khóa học không thành công", {
+          icon: "warning",
+        });
       },
       success: function(data) {
         var number_rows = $('.tr-shadow').length;
@@ -224,11 +242,8 @@ $(document).ready(function() {
           })
           .then((willDelete) => {
             if (willDelete) {
-              swal("Poof! The course has been deleted!", {
-                icon: "success",
-              });
-              var id = $(this).parent().parent().parent().attr('data-id');
               var btn = $(this);
+              var id = btn.parent().parent().parent().attr('data-id');
               $.ajax({
                 url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-course',
                 type: 'POST',
@@ -241,11 +256,19 @@ $(document).ready(function() {
                 dataType: 'json',
                 error: function(e) {
                   console.log(e.message);
-                  alert('Subject name has existed!');
+                  swal("Error when delete the course!", {
+                    icon: "warning",
+                  });
                 },
                 success: function(data) {
-                  console.log(this);
-                  $(btn).parent().parent().parent().remove();
+                  for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
+                    var no_cell = $('.courses-column-1')[i+1]
+                    $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                  }
+                  btn.parent().parent().parent().remove();
+                  swal("Poof! The course has been deleted!", {
+                    icon: "success",
+                  });
                   console.log(data);
                 }
               });
@@ -255,9 +278,12 @@ $(document).ready(function() {
           });
           $('#new-course-modal').css('display', 'none');
         });
+        swal("Tạo khóa học thành công!", {
+          icon: "success",
+        });
       }
     });
-    $('#new-course-modal').css('display', 'none');
+$('#new-course-modal').css('display', 'none');
 });
 
 $('#update-course-form').submit(function(e) {
@@ -281,7 +307,9 @@ $('#update-course-form').submit(function(e) {
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
-      alert('Subject name has existed!');
+      swal("Cập nhật khóa học không thành công", {
+        icon: "warning",
+      });
     },
     success: function(data) {
       $('[data-id="' + data.id + '"] .courses-column-2').html(data.courseName);
@@ -290,5 +318,8 @@ $('#update-course-form').submit(function(e) {
     }
   });
   $('#update-course-modal').css('display', 'none');
+  swal("Cập nhật khóa học thành công", {
+    icon: "success",
+  });
 });
 })

@@ -3,19 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Danh sách người dùng</title>
-  <link rel="stylesheet" type="text/css" href="../../../css/style.css">
-  <link href="../../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
+  <title>Danh sách khóa học</title>
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="../../../js/admin.js"></script>
-  <script type="text/javascript" src="../../../js/admin_users.js"></script>
+  <script type="text/javascript" src="../../js/check_session.js"></script>
+  <script type="text/javascript" src="../../js/admin.js"></script>
+  <script type="text/javascript" src="../../js/admin_exams.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body class="animsition" style="animation-duration: 900ms; opacity: 1;">
   <div class="page-wrapper">
     <aside class="menu-sidebar d-none d-lg-block">
       <div class="logo">
         <a href="#">
-          <img src="../../../images/logo_admin.png" alt="Cool Admin">
+          <img src="../../images/logo_admin.png" alt="Cool Admin">
         </a>
       </div>
       <div class="menu-sidebar__content js-scrollbar1 ps ps--active-y">
@@ -26,8 +28,8 @@
                 <i class="fas fa-tachometer-alt"></i>Dashboard
               </a>
             </li>
-            <li class="active">
-              <a href="">
+            <li>
+              <a href="users.html">
                 <i class="fas fa-users"></i>Users
               </a>
             </li>
@@ -46,8 +48,8 @@
                 <i class="fas fa-book-open"></i>Lessons
               </a>
             </li>
-            <li>
-              <a href="exams.html">
+            <li class="active">
+              <a href="">
                 <i class="fas fa-file-alt"></i>Exams
               </a>
             </li>
@@ -83,7 +85,7 @@
                       </div>
                       <div class="mess__item">
                         <div class="image img-cir img-40">
-                          <img src="../../../images/avatar-06.jpg" alt="Michelle Moreno">
+                          <img src="../../images/avatar-06.jpg" alt="Michelle Moreno">
                         </div>
                         <div class="content">
                           <h6>Michelle Moreno</h6>
@@ -93,7 +95,7 @@
                       </div>
                       <div class="mess__item">
                         <div class="image img-cir img-40">
-                          <img src="../../../images/avatar-04.jpg" alt="Diane Myers">
+                          <img src="../../images/avatar-04.jpg" alt="Diane Myers">
                         </div>
                         <div class="content">
                           <h6>Diane Myers</h6>
@@ -115,7 +117,7 @@
                       </div>
                       <div class="email__item">
                         <div class="image img-cir img-40">
-                          <img src="../../../images/avatar-06.jpg" alt="Cynthia Harvey">
+                          <img src="../../images/avatar-06.jpg" alt="Cynthia Harvey">
                         </div>
                         <div class="content">
                           <p>Meeting about new dashboard...</p>
@@ -124,7 +126,7 @@
                       </div>
                       <div class="email__item">
                         <div class="image img-cir img-40">
-                          <img src="../../../images/avatar-05.jpg" alt="Cynthia Harvey">
+                          <img src="../../images/avatar-05.jpg" alt="Cynthia Harvey">
                         </div>
                         <div class="content">
                           <p>Meeting about new dashboard...</p>
@@ -133,7 +135,7 @@
                       </div>
                       <div class="email__item">
                         <div class="image img-cir img-40">
-                          <img src="../../../images/avatar-04.jpg" alt="Cynthia Harvey">
+                          <img src="../../images/avatar-04.jpg" alt="Cynthia Harvey">
                         </div>
                         <div class="content">
                           <p>Meeting about new dashboard...</p>
@@ -188,7 +190,7 @@
                 <div class="account-wrap">
                   <div class="account-item clearfix js-item-menu">
                     <div class="image">
-                      <img src="../../../images/avatar-01.jpg" alt="John Doe">
+                      <img src="../../images/avatar-01.jpg" alt="John Doe">
                     </div>
                     <div class="content">
                       <a class="js-acc-btn" href="#">john doe</a>
@@ -198,7 +200,7 @@
                       <div class="info clearfix">
                         <div class="image">
                           <a href="#">
-                            <img src="../../../images/avatar-01.jpg" alt="John Doe">
+                            <img src="../../images/avatar-01.jpg" alt="John Doe">
                           </a>
                         </div>
                         <div class="content">
@@ -221,7 +223,7 @@
                         </div>
                       </div>
                       <div class="account-dropdown__footer">
-                        <a href="#">
+                        <a href="#" id="admin-logout">
                           <i class="fas fa-power-off"></i>Logout
                         </a>
                       </div>
@@ -238,7 +240,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12">
-                <h3 class="title-5 m-b-35">Users Table</h3>
+                <h3 class="title-5 m-b-35">Courses Table</h3>
                 <div class="table-data__tool">
                   <div class="table-data__tool-left">
                     <div class="rs-select2--light rs-select2--md">
@@ -258,46 +260,93 @@
                       <div class="dropDownSelect2"></div>
                     </div>
                     <button class="au-btn-filter">
-                      <i class="fas fa-sort-amount-down"></i>filters</button>
-                    </div>
-                    <div class="table-data__tool-right">
-                      <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        <i class="fas fa-plus"></i>add user
-                      </button>
-                      <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                        <select class="export-select" name="type" tabindex="-1" aria-hidden="true">
-                          <option selected="selected">Export</option>
-                          <option value="">Option 1</option>
-                          <option value="">Option 2</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                      </div>
+                      <i class="fas fa-sort-amount-down"></i>filters
+                    </button>
+                  </div>
+                  <div class="table-data__tool-right">
+                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                      <select class="export-select" name="type" tabindex="-1" aria-hidden="true">
+                        <option selected="selected">Export</option>
+                        <option value="">Option 1</option>
+                        <option value="">Option 2</option>
+                      </select>
+                      <div class="dropDownSelect2"></div>
                     </div>
                   </div>
-                  <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2">
-                      <thead>
-                        <tr>
-                          <th class="users-column-1">STT</th>
-                          <th class="users-column-2">Name</th>
-                          <th class="users-column-3">Username</th>
-                          <th class="users-column-4">Password</th>
-                          <th class="users-column-5">Email</th>
-                          <th class="users-column-6">Phone number</th>
-                          <th class="users-column-7">Address</th>
-                          <th class="users-column-8"></th>
-                        </tr>
-                      </thead>
-                      <tbody id="users-table-content">
-                      </tbody>
-                    </table>
-                  </div>
+                </div>
+                <div class="table-responsive table-responsive-data2">
+                  <table class="table table-data2">
+                    <thead>
+                      <tr>
+                        <th class="courses-column-1">No</th>
+                        <th class="courses-column-2">Course</th>
+                        <th class="courses-column-3">Number questions</th>
+                        <th class="courses-column-5"></th>
+                      </tr>
+                    </thead>
+                    <tbody id="exams-table-content">
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exam-details-modal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" style="display: none; padding-left: 17px;">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label">Questions list</h5>
+          <button type="button" class="close close-exam-details-modal-btn" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="questions-list">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary close-exam-details-modal-btn" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn add-question-btn" id="btn-add-ques"><i class="fa fa-plus"></i> Thêm câu hỏi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="add-question-modal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" style="display: none; padding-left: 17px;">
+    <form action="" method="post" class="" id="new-question-form">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-label">Create new question</h5>
+            <button type="button" class="close close-addques-modal-btn" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="new-question-block" class="quizitem normal open">
+              <div class="quizitem-body show">
+                <div class="form-row">
+                  <div class="lb">Nội dung câu hỏi</div>
+                  <textarea class="form-control" id="new-quiz-content-input" placeholder="Nội dung của câu hỏi." rows="10" maxlength="800" required=""></textarea>
+                </div>
+                <div class="form-row answer-wrap">
+                  <div class="lb clear">Câu trả lời </div>
+                  <ul class="new-ques-answer-list"></ul>
+                    <a href="javascript:;" class=" btn btn-danger btn-new-quiz-que-add" data-guid="lmdw"><i class="fa fa-plus"></i>Thêm câu trả lời</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary close-addques-modal-btn" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
   </html>

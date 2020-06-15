@@ -3,34 +3,31 @@ $(document).ready(function() {
     return !$.trim(el.html())
   }
   $.ajax({
-    url: 'https://teaching-online-lms.herokuapp.com/api/exam/get-examination',
+    url: 'https://teaching-online-lms.herokuapp.com/api/user/courses',
     type: 'GET',
     headers: {
       'Authorization': sessionStorage.getItem('admin_token')
-    },
-    data: {
-      courseId: '5edf9a639bf30907442d2128'
     },
     dataType: 'json',
     error: function(e) {
       console.log(e.message);
     },
     success: function(data) {
-      // for(let i = 0;i < data.length;i++) {
-        var exam_row = `<tr class="tr-shadow" data-id="5edf9a639bf30907442d2128">
-        <td class="courses-column-1">1</td>
-        <td class="courses-column-2">Maketing</td>
-        <td class="courses-column-3">${data.length}</td>
+      for(let i = 0;i < data.length;i++) {
+        var exam_row = `<tr class="tr-shadow" data-id="${data[i].id}">
+        <td class="courses-column-1">${i+1}</td>
+        <td class="courses-column-2">${data[i].name}</td>
+        <td class="courses-column-3">${data[i].examNumber}</td>
         <td class="courses-column-4">
         <div class="table-data-feature">
+        <button class="item exam-details-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
+        <i class="far fa-eye"></i>
+        </button>
         <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
         <i class="fas fa-pen"></i>
         </button>
         <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
         <i class="fas fa-trash-alt"></i>
-        </button>
-        <button class="item exam-details-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
-        <i class="fas fa-ellipsis-v"></i>
         </button>
         </div>
         </td>
@@ -38,11 +35,12 @@ $(document).ready(function() {
         <tr class="spacer"></tr>`
         console.log(data);
         $('#exams-table-content').append(exam_row);
-
+      }
 
       $('.exam-details-btn').click(function() {
         if (isEmpty($('#questions-list'))){
-          $('#btn-add-ques').attr('data-id', $(this).parent().parent().parent().attr('data-id'));
+          id = $(this).parent().parent().parent().attr('data-id');
+          $('#btn-add-ques').attr('data-id', id);
           console.log('click');
           $('#exam-details-modal').css('display', 'block');
           document.documentElement.style.overflow = 'hidden';
@@ -53,7 +51,7 @@ $(document).ready(function() {
               'Authorization': sessionStorage.getItem('admin_token')
             },
             data: {
-              courseId: '5edf9a639bf30907442d2128'
+              courseId: id
             },
             dataType: 'json',
             error: function(e) {
@@ -65,7 +63,7 @@ $(document).ready(function() {
                 <div class="quizitem-heading clear">
                 <div class="questions-no">${i+1}.</div>
                 <div class="right">
-                <a href="javascript:;" class="btn btn-danger btn-quiz-del"><i class="fa fa-times"></i></a>
+                <a href="javascript:;" class="btn btn-danger btn-quiz-del" data-id=${data[i].id}><i class="fa fa-times"></i></a>
                 <span class="indicator"><i class="fa fa-angle-down"></i></span>
                 </div>
                 <p class="tt-store">${data[i].question}</p>
@@ -96,7 +94,7 @@ $(document).ready(function() {
                   <div class="correct-answer">
                   <div class="form-check">
                   <label class="checklb">
-                  <input class="form-check-input" type="radio" name="correct-answer-${i}" value="rrwf"><span class="ip-avata"></span>
+                  <input class="form-check-input" type="radio" name="correct-answer-${i}" required><span class="ip-avata"></span>
                   </label>
                   </div>
                   </div>
@@ -123,26 +121,33 @@ $(document).ready(function() {
                   })
                   .then((willDelete) => {
                     if (willDelete) {
-                      swal("Poof! The question has been deleted!", {
-                        icon: "success",
-                      });
-                      var id = $(this).parent().parent().parent().attr('data-id');
+                      var btn = $(this);
+                      var id = btn.attr('data-id');
                       $.ajax({
-                        url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-examination',
+                        url: 'https://teaching-online-lms.herokuapp.com/api/exam/delete-exam',
                         type: 'POST',
                         headers: {
                           'Authorization': sessionStorage.getItem('admin_token')
                         },
                         data: {
-                          id: id
+                          examId: id
                         },
                         dataType: 'json',
                         error: function(e) {
                           console.log(e.message);
-                          alert('Subject name has existed!');
+                          swal("Error when delete the lesson!", {
+                            icon: "warning",
+                          });
                         },
                         success: function(data) {
-                          $(this).parent().parent().parent().remove();
+                          for (let i = $('.btn-quiz-del').index(btn) + 1; i < $('.btn-quiz-del').length; i++) {
+                            var no_cell = $('.questions-no')[i]
+                            $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                          }
+                          btn.parent().parent().parent().remove();
+                          swal("Poof! The question has been deleted!", {
+                            icon: "success",
+                          });
                           console.log(data);
                         }
                       });
@@ -159,7 +164,7 @@ $(document).ready(function() {
                 <div class="correct-answer">
                 <div class="form-check">
                 <label class="checklb">
-                <input class="form-check-input" type="radio" name="correct-answer-${index}" value="rrwf"><span class="ip-avata"></span>
+                <input class="form-check-input" type="radio" name="correct-answer-${index}" required><span class="ip-avata"></span>
                 </label>
                 </div>
                 </div>
@@ -228,176 +233,181 @@ $(document).ready(function() {
               });
             }
           });
-        }
-        else {
-          $('#exam-details-modal').css('display', 'block');
-        }
+}
+else {
+  $('#exam-details-modal').css('display', 'block');
+}
+});
+}
+});
+
+$('.close-exam-details-modal-btn').click(function() {
+  $('#exam-details-modal').css('display', 'none');
+});
+
+$('#btn-add-ques').click(function() {
+  $('#add-question-modal').css('display', 'block');
+})
+
+$('.btn-new-quiz-que-add').click(function() {
+  var answer_block = `<li id="answer-rrwf" class="answer-item col-md-12 clear" style="margin-bottom: 0.5em;margin-top: 0.5em;">
+  <div class="correct-answer">
+  <div class="form-check">
+  <label class="checklb">
+  <input class="form-check-input" type="radio" name="new-correct-answer" required><span class="ip-avata"></span>
+  </label>
+  </div>
+  </div>
+  <div class="answer-content">
+  <input class="form-control col-md-11" name="new-answer-text" placeholder="Nội dung câu trả lời." value="" type="text" required="">
+  </div>
+  <div class="delete-answer">
+  <a href="javascript:;" class="btn btn-danger btn-new-quiz-que-del"><i class="fa fa-trash"></i></a>
+  </div>
+  </li>`
+
+  $(this).prev().append(answer_block);
+
+  var new_btns_del = $('.btn-new-quiz-que-del');
+  var number_new_answers = new_btns_del.length;
+  $(new_btns_del[number_new_answers-1]).click(function() {
+    console.log('click');
+    $(this).parent().parent().remove();
+  });
+})
+
+$('.close-addques-modal-btn').click(function() {
+  $('#add-question-modal').css('display', 'none');
+});
+
+$('#new-question-form').submit(function(e) {
+  e.preventDefault();
+  var courseId = $('#btn-add-ques').attr('data-id');
+  var question = $('#new-quiz-content-input').val();
+  var answers = [];
+  $('input[name="new-answer-text"]').each(function() {
+    answer = $(this).val();
+    answers.push(answer);
+  })
+  var radio_result = $('input[name="new-correct-answer"]');
+  var result = radio_result.index(radio_result.filter(':checked'));
+  console.log(result);
+  $.ajax({
+    url: 'https://teaching-online-lms.herokuapp.com/api/exam/new-examination',
+    type: 'POST',
+    headers: {
+      'Authorization': sessionStorage.getItem('admin_token')
+    },
+    data: {
+      courseId: courseId,
+      question: question,
+      answers: answers,
+      result: result
+    },
+    dataType: 'json',
+    error: function(e) {
+      console.log(e.message);
+      alert('Subject name has existed!');
+    },
+    success: function(data) {
+      var number_rows = $('#questions-list .quizitem').length;
+      var question_row = `<div class="quizitem normal open">
+      <div class="quizitem-heading clear">
+      <div class="questions-no">${number_rows+1}.</div>
+      <div class="right">
+      <a href="javascript:;" class="btn btn-danger btn-quiz-del" data-id=${data.id}><i class="fa fa-times"></i></a>
+      <span class="indicator"><i class="fa fa-angle-down"></i></span>
+      </div>
+      <p class="tt-store">${data.question}</p>
+      </div>
+      <div class="quizitem-body">
+      <div class="form-row">
+      <div class="lb">Nội dung câu hỏi</div>
+      <textarea class="form-control quiz-content-input" placeholder="Nội dung của câu hỏi." rows="10" maxlength="800" required="" oninvalid="checkVisible(this)">${data.question}</textarea>
+      </div>
+      <div class="form-row answer-wrap">
+      <div class="lb clear">Câu trả lời </div>
+      <ul class="answer-list">
+      </ul>
+      <a href="javascript:;" class=" btn btn-danger btn-quiz-que-add" data-guid="lmdw"><i class="fa fa-plus"></i>Thêm câu trả lời</a>
+      </div>
+      <div class="update-question">
+      <button type="button" class="btn update-question-btn" data-id=${data.id}>
+      Cập nhật
+      </button>
+      </div>
+      </div>
+      </div>`
+      console.log(data);
+      $('#questions-list').append(question_row);
+
+      for (let j = 0; j < data.answers.length; j++) {
+        var answer_row = `<li id="answer-rrwf" class="answer-item col-md-12 clear" style="margin-bottom: 0.5em;margin-top: 0.5em;">
+        <div class="correct-answer">
+        <div class="form-check">
+        <label class="checklb">
+        <input class="form-check-input" type="radio" name="correct-answer-${number_rows}" value="rrwf"><span class="ip-avata"></span>
+        </label>
+        </div>
+        </div>
+        <div class="answer-content">
+        <input class="form-control col-md-11" name="answer-text-${number_rows}" placeholder="Nội dung câu trả lời." value="${data.answers[j]}" type="text" required="">
+        </div>
+        <div class="delete-answer">
+        <a href="javascript:;" class="btn btn-danger btn-quiz-que-del"><i class="fa fa-trash"></i></a>
+        </div>
+        </li>`
+        $($('.answer-list')[number_rows]).append(answer_row);
+      }
+
+      $($('input[name="correct-answer-' + (number_rows) + '"]')[data.result]).attr('checked', true);
+
+      $($('.btn-quiz-del')[$('.btn-quiz-del').length-1]).click(function() {
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this question!",
+          icon: "warning",
+          buttons: ["Stop", "Delete it"],
+          dangerMode: true,
+          timer: 5000,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            btn = $(this);
+            var id = btn.attr('data-id');
+            $.ajax({
+              url: 'https://teaching-online-lms.herokuapp.com/api/exam/delete-exam',
+              type: 'POST',
+              headers: {
+                'Authorization': sessionStorage.getItem('admin_token')
+              },
+              data: {
+                examId: id
+              },
+              dataType: 'json',
+              error: function(e) {
+                console.log(e.message);
+                alert('Subject name has existed!');
+              },
+              success: function(data) {
+                for (let i = $('.btn-quiz-del').index(btn) + 1; i < $('.btn-quiz-del').length; i++) {
+                  var no_cell = $('.questions-no')[i]
+                  $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                }
+                btn.parent().parent().parent().remove();
+                swal("Poof! The question has been deleted!", {
+                  icon: "success",
+                });
+                console.log(data);
+              }
+            });
+          } else {
+            swal("The question is safe!");
+          }
+        });
       });
+      console.log(data);
     }
   });
-
-  $('.close-exam-details-modal-btn').click(function() {
-    $('#exam-details-modal').css('display', 'none');
-  });
-
-  $('#btn-add-ques').click(function() {
-    $('#add-question-modal').css('display', 'block');
-  })
-
-  $('.btn-new-quiz-que-add').click(function() {
-    var answer_block = `<li id="answer-rrwf" class="answer-item col-md-12 clear" style="margin-bottom: 0.5em;margin-top: 0.5em;">
-    <div class="correct-answer">
-    <div class="form-check">
-    <label class="checklb">
-    <input class="form-check-input" type="radio" name="new-correct-answer" value="rrwf"><span class="ip-avata"></span>
-    </label>
-    </div>
-    </div>
-    <div class="answer-content">
-    <input class="form-control col-md-11" name="new-answer-text" placeholder="Nội dung câu trả lời." value="" type="text" required="">
-    </div>
-    <div class="delete-answer">
-    <a href="javascript:;" class="btn btn-danger btn-new-quiz-que-del"><i class="fa fa-trash"></i></a>
-    </div>
-    </li>`
-
-    $(this).prev().append(answer_block);
-
-    var new_btns_del = $('.btn-new-quiz-que-del');
-    var number_new_answers = new_btns_del.length;
-    $(new_btns_del[number_new_answers-1]).click(function() {
-      console.log('click');
-      $(this).parent().parent().remove();
-    });
-  })
-
-  $('.close-addques-modal-btn').click(function() {
-    $('#add-question-modal').css('display', 'none');
-  });
-
-  $('#new-question-form').submit(function(e) {
-    e.preventDefault();
-    var courseId = $('#btn-add-ques').attr('data-id');
-    var question = $('#new-quiz-content-input').val();
-    var answers = [];
-    $('input[name="new-answer-text"]').each(function() {
-      answer = $(this).val();
-      answers.push(answer);
-    })
-    var radio_result = $('input[name="new-correct-answer"]');
-    var result = radio_result.index(radio_result.filter(':checked'));
-    console.log(result);
-    $.ajax({
-      url: 'https://teaching-online-lms.herokuapp.com/api/exam/new-examination',
-      type: 'POST',
-      headers: {
-        'Authorization': sessionStorage.getItem('admin_token')
-      },
-      data: {
-        courseId: courseId,
-        question: question,
-        answers: answers,
-        result: result
-      },
-      dataType: 'json',
-      error: function(e) {
-        console.log(e.message);
-        alert('Subject name has existed!');
-      },
-      success: function(data) {
-        var number_rows = $('.quizitem').length;
-        var question_row = `<div class="quizitem normal open">
-        <div class="quizitem-heading clear">
-        <div class="questions-no">${number_rows+1}.</div>
-        <div class="right">
-        <a href="javascript:;" class="btn btn-danger btn-quiz-del"><i class="fa fa-times"></i></a>
-        <span class="indicator"><i class="fa fa-angle-down"></i></span>
-        </div>
-        <p class="tt-store">${data.question}</p>
-        </div>
-        <div class="quizitem-body">
-        <div class="form-row">
-        <div class="lb">Nội dung câu hỏi</div>
-        <textarea class="form-control quiz-content-input" placeholder="Nội dung của câu hỏi." rows="10" maxlength="800" required="" oninvalid="checkVisible(this)">${data.question}</textarea>
-        </div>
-        <div class="form-row answer-wrap">
-        <div class="lb clear">Câu trả lời </div>
-        <ul class="answer-list">
-        </ul>
-        <a href="javascript:;" class=" btn btn-danger btn-quiz-que-add" data-guid="lmdw"><i class="fa fa-plus"></i>Thêm câu trả lời</a>
-        </div>
-        <div class="update-question">
-        <button type="button" class="btn update-question-btn" data-id=${data.id}>
-        Cập nhật
-        </button>
-        </div>
-        </div>
-        </div>`
-        console.log(data);
-        $('#questions-list').append(question_row);
-
-        for (let j = 0; j < data.answers.length; j++) {
-          var answer_row = `<li id="answer-rrwf" class="answer-item col-md-12 clear" style="margin-bottom: 0.5em;margin-top: 0.5em;">
-          <div class="correct-answer">
-          <div class="form-check">
-          <label class="checklb">
-          <input class="form-check-input" type="radio" name="correct-answer-${number_rows}" value="rrwf"><span class="ip-avata"></span>
-          </label>
-          </div>
-          </div>
-          <div class="answer-content">
-          <input class="form-control col-md-11" name="answer-text-${number_rows}" placeholder="Nội dung câu trả lời." value="${data.answers[j]}" type="text" required="">
-          </div>
-          <div class="delete-answer">
-          <a href="javascript:;" class="btn btn-danger btn-quiz-que-del"><i class="fa fa-trash"></i></a>
-          </div>
-          </li>`
-          $($('.answer-list')[number_rows]).append(answer_row);
-        }
-
-        $($('input[name="correct-answer-' + (number_rows) + '"]')[data.result]).attr('checked', true);
-
-        $($('.btn-quiz-del')[$('.btn-quiz-del').length-1]).click(function() {
-          swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this question!",
-            icon: "warning",
-            buttons: ["Stop", "Delete it"],
-            dangerMode: true,
-            timer: 5000,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              swal("Poof! The question has been deleted!", {
-                icon: "success",
-              });
-              var id = $(this).parent().parent().parent().attr('data-id');
-              $.ajax({
-                url: 'https://teaching-online-lms.herokuapp.com/api/admin/delete-examination',
-                type: 'POST',
-                headers: {
-                  'Authorization': sessionStorage.getItem('admin_token')
-                },
-                data: {
-                  id: id
-                },
-                dataType: 'json',
-                error: function(e) {
-                  console.log(e.message);
-                  alert('Subject name has existed!');
-                },
-                success: function(data) {
-                  $(this).parent().parent().parent().remove();
-                  console.log(data);
-                }
-              });
-            } else {
-              swal("The question is safe!");
-            }
-          });
-        });
-        console.log(data);
-      }
-    });
-  });
+});
 })
