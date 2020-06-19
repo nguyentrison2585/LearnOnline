@@ -27,7 +27,9 @@ $(document).ready(function() {
             email: email
           },
           dataType: 'json',
-          error: function(e) {
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
             $('#user-signup-alert').html("Username or password are not correct!");
             $('#user-signup-alert').addClass('alert-danger');
             window.scrollTo(0, 0);
@@ -59,7 +61,7 @@ $(document).ready(function() {
             sessionStorage.setItem('user_token', data.token);
             sessionStorage.setItem('user_role', 1);
             sessionStorage.setItem('setupTimeUser', new Date().getTime());
-            window.location.href = '../static_pages/home.html';
+            window.location.href = 'home.html';
           }
         });
       }
@@ -70,5 +72,4 @@ $(document).ready(function() {
       window.scrollTo(0, 0);
     }
   });
-
 })

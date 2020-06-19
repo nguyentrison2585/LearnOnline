@@ -2,6 +2,8 @@ $(document).ready(function() {
   if (sessionStorage.getItem("user_token") === null) {
     var user_zone = `<li><a class="unica-reg-acc" href="login.html">Đăng nhập</a></li>
     <li><a class="unica-log-acc" href="signup.html">Đăng ký</a></li>`
+    $('#user-account-zone').empty();
+    $('#user-account-zone').append(user_zone);
   }
   else {
     if (sessionStorage.getItem("user_role") == 0) {

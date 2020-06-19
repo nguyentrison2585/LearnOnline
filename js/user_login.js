@@ -49,10 +49,11 @@ $(document).ready(function() {
           password: password
         },
         dataType: 'json',
-        error: function(e) {
-          console.log(e.message);
-          $('#user-login-alert').html('Username or password incorrect!');
+        error: function(xhr, status, error) {
+          var err = JSON.parse(xhr.responseText);
+          $('#user-login-alert').html(err.message);
           $('#user-login-alert').addClass('alert-danger');
+          window.scrollTo(0, 0);
         },
         success: function(data) {
           sessionStorage.setItem('user_token', data.token);

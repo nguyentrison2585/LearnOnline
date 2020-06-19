@@ -1,7 +1,4 @@
 $(document).ready(function() {
-  var courseId = parseURLParams(window.location.href);
-  console.log(courseId);
-
   function parseURLParams(url) {
     var queryStart = url.indexOf("?") + 1,
     queryEnd   = url.indexOf("#") + 1 || url.length + 1,
@@ -22,11 +19,14 @@ $(document).ready(function() {
     return parms;
   }
 
+  var courseId = parseURLParams(window.location.href);
+  console.log(courseId);
+
   $.ajax({
     url: 'https://teaching-online-lms.herokuapp.com/api/user/subject-byCourseId',
     dataType: 'json',
     data: {
-      courseId: courseId.courseId[0],
+      courseId: courseId.courseId[0]
     },
     error: function(e) {
       alert('<p>Đã có lỗi xảy ra khi lấy dữ liệu</p>');

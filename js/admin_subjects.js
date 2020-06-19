@@ -220,8 +220,8 @@ $(document).ready(function() {
           });
         });
         swal("Tạo mới lĩnh vực thành công!", {
-                  icon: "success",
-                });
+          icon: "success",
+        });
       }
     });
   });
