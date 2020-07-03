@@ -10,7 +10,7 @@ $(document).ready(function() {
       var user_zone = `<li class="account-wrap">
       <div class="account-item clearfix js-item-menu">
       <div class="image">
-      <img src="../../images/avatar-01.jpg" alt="User Image">
+      <img id="user-img-header" alt="User Image">
       </div>
       <div class="content">
       <a class="js-acc-btn" href="#" id="acc-btn-name"></a>
@@ -20,7 +20,7 @@ $(document).ready(function() {
       <div class="info clearfix">
       <div class="image">
       <a href="#">
-      <img src="../../images/avatar-01.jpg" alt="User Image">
+      <img id="user-img-dropdown" alt="User Image">
       </a>
       </div>
       <div class="content">
@@ -65,7 +65,9 @@ $(document).ready(function() {
         success: function(data) {
           $('#acc-btn-name').html(data.username);
           $('#dropdown-acc-name').html(data.username);
-          $('#dropdown-acc-email').html(data.email)
+          $('#dropdown-acc-email').html(data.email);
+          $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+          $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
           console.log(data);
         },
         type: 'GET'
@@ -75,7 +77,7 @@ $(document).ready(function() {
       var user_zone = `<li class="account-wrap">
       <div class="account-item clearfix js-item-menu">
       <div class="image">
-      <img src="../../images/avatar-01.jpg" alt="User Image">
+      <img id="user-img-header" alt="User Image">
       </div>
       <div class="content">
       <a class="js-acc-btn" href="#" id="acc-btn-name"></a>
@@ -85,7 +87,7 @@ $(document).ready(function() {
       <div class="info clearfix">
       <div class="image">
       <a href="#">
-      <img src="../../images/avatar-01.jpg" alt="User Image">
+      <img id="user-img-dropdown" alt="User Image">
       </a>
       </div>
       <div class="content">
@@ -135,7 +137,15 @@ $(document).ready(function() {
         success: function(data) {
           $('#acc-btn-name').html(data.username);
           $('#dropdown-acc-name').html(data.username);
-          $('#dropdown-acc-email').html(data.email)
+          $('#dropdown-acc-email').html(data.email);
+          if (data.avatar != null) {
+            $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+            $('#user-img-dropdown').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+          }
+          else {
+            $('#user-img-header').prop('src', '../../images/default-avatar.png');
+            $('#user-img-dropdown').prop('src', '../../images/default-avatar.png');
+          }
           console.log(data);
         },
         type: 'GET'

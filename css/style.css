@@ -2039,6 +2039,45 @@ button.close {
   list-style: none;
 }
 
+.course-img-update {
+  text-align: center;
+}
+
+.title-course {
+  font-weight: 700;
+  font-size: 16px;
+  color: #4073a7;
+  padding-bottom: 20px;
+}
+
+.course-image {
+  width: 300px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.course-image img {
+  width: 100%;
+}
+
+.custom-file-image label {
+  display: block;
+}
+
+.custom-file-image .label-custom {
+  width: 30px;
+  margin: auto;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ebebeb;
+  text-transform: capitalize;
+  padding: 3px 18px 4px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
 /* questions list */
 .quizitem {
   float: left;
@@ -2160,6 +2199,7 @@ button.close {
 .update-question {
   text-align: center;
 }
+
 .update-question-btn {
   color: #fff;
   background-color: #2caee1;

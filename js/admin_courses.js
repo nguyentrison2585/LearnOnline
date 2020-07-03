@@ -14,6 +14,9 @@ $(document).ready(function() {
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
+        if (data[i].image == null) {{
+          data[i].image = '';
+        }}
         var course_row = `<tr class="tr-shadow" data-id="${data[i].id}">
         <td class="courses-column-1">${i+1}</td>
         <td class="courses-column-2">${data[i].name}</td>
@@ -27,14 +30,14 @@ $(document).ready(function() {
         </td>
         <td class="courses-column-7">
         <div class="table-data-feature">
-        <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+        <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="Edit">
         <i class="fas fa-pen"></i>
         </button>
-        <button class="item delete-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-        <i class="fas fa-trash-alt"></i>
+        <button class="item update-img-btn" data-toggle="tooltip" data-placement="top" title="Update image" data-src="${data[i].image}">
+        <i class="far fa-image"></i>
         </button>
-        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
-        <i class="fas fa-ellipsis-v"></i>
+        <button class="item delete-btn" data-toggle="tooltip" data-placement="top" title="Delete">
+        <i class="fas fa-trash-alt"></i>
         </button>
         </div>
         </td>
@@ -54,6 +57,21 @@ $(document).ready(function() {
         $('#update-description').val(row.find('.courses-column-4').html());
         $('#update-course-teacher').val(row.find('.courses-column-5').html());
         $('#update-course-form').attr('data-id', row.attr('data-id'));
+      });
+
+      $('.update-img-btn').click(function() {
+        console.log('click');
+        $('#update-img-modal').css('display', 'block');
+        $('#update-img-modal input').val('');
+        var row = $(this).parent().parent().parent();
+        if ($(this).attr('data-src') != '') {
+          $('#load-course-image').prop('src', 'https://teaching-online-lms.herokuapp.com' + $(this).attr('data-src'));
+        }
+        else {
+          $('#load-course-image').prop('src', '../../images/default-banner.jpg');
+        }
+
+        $('#update-img-form').attr('data-id', row.attr('data-id'));
       });
 
       $('.delete-btn').click(function() {
@@ -149,7 +167,6 @@ $(document).ready(function() {
     }
   });
 
-
   $('#open-newco-modal').click(function() {
     $('#new-course-modal').css('display', 'block');
     $('#new-course-modal input').val('');
@@ -161,6 +178,10 @@ $(document).ready(function() {
 
   $('.close-updateco-modal-btn').click(function() {
     $('#update-course-modal').css('display', 'none');
+  });
+
+  $('.close-updateimg-modal-btn').click(function() {
+    $('#update-img-modal').css('display', 'none');
   });
 
   $('#new-course-form').submit(function(e) {
@@ -204,14 +225,14 @@ $(document).ready(function() {
         </td>
         <td class="courses-column-7">
         <div class="table-data-feature">
-        <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+        <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="Edit">
         <i class="fas fa-pen"></i>
         </button>
-        <button class="item delete-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
-        <i class="fas fa-trash-alt"></i>
+        <button class="item" data-toggle="tooltip" data-placement="top" title="Update image" data-src="">
+        <i class="far fa-image"></i>
         </button>
-        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="More">
-        <i class="fas fa-ellipsis-v"></i>
+        <button class="item delete-btn" data-toggle="tooltip" data-placement="top" title="Delete">
+        <i class="fas fa-trash-alt"></i>
         </button>
         </div>
         </td>
@@ -230,6 +251,15 @@ $(document).ready(function() {
           $('#update-description').val(row.find('.courses-column-4').html());
           $('#update-course-teacher').val(row.find('.courses-column-5').html());
           $('#update-course-form').attr('data-id', row.attr('data-id'));
+        });
+
+        $($('.update-img-btn')[$('.update-img-btn').length-1]).click(function() {
+          console.log('click');
+          $('#update-img-modal').css('display', 'block');
+          $('#update-img-modal input').val('');
+          var row = $(this).parent().parent().parent();
+          $('#load-course-image').prop('src', 'https://teaching-online-lms.herokuapp.com' + $(this).attr('data-src'));
+          $('#update-img-form').attr('data-id', row.attr('data-id'));
         });
 
         $($('.delete-btn')[$('.delete-btn').length-1]).click(function() {
@@ -262,8 +292,8 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                   for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
-                    var no_cell = $('.courses-column-1')[i+1]
-                    $(no_cell).html(parseInt($(no_cell).html()) - 1)
+                    var no_cell = $('.courses-column-1')[i+1];
+                    $(no_cell).html(parseInt($(no_cell).html()) - 1);
                   }
                   btn.parent().parent().parent().remove();
                   swal("Poof! The course has been deleted!", {
@@ -283,43 +313,84 @@ $(document).ready(function() {
         });
       }
     });
-$('#new-course-modal').css('display', 'none');
-});
+    $('#new-course-modal').css('display', 'none');
+  });
 
-$('#update-course-form').submit(function(e) {
-  e.preventDefault();
-  var id = $(this).attr('data-id');
-  var course_name = $('#update-course-name').val();
-  console.log(course_name);
-  var description = $('#update-description').val();
-  $.ajax({
-    url: 'https://teaching-online-lms.herokuapp.com/api/admin/update-course',
-    type: 'POST',
-    headers: {
-      'Authorization': sessionStorage.getItem('admin_token')
-    },
-    data: {
-      courseId: id,
-      courseName: course_name,
-      description: description,
-      completed: 'false'
-    },
-    dataType: 'json',
-    error: function(e) {
-      console.log(e.message);
-      swal("Cập nhật khóa học không thành công", {
-        icon: "warning",
-      });
-    },
-    success: function(data) {
-      $('[data-id="' + data.id + '"] .courses-column-2').html(data.courseName);
-      $('[data-id="' + data.id + '"] .courses-column-4').html(data.description);
-      console.log(data);
+  $('#update-course-form').submit(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    var course_name = $('#update-course-name').val();
+    console.log(course_name);
+    var description = $('#update-description').val();
+    $.ajax({
+      url: 'https://teaching-online-lms.herokuapp.com/api/admin/update-course',
+      type: 'POST',
+      headers: {
+        'Authorization': sessionStorage.getItem('admin_token')
+      },
+      data: {
+        courseId: id,
+        courseName: course_name,
+        description: description,
+        completed: 'false'
+      },
+      dataType: 'json',
+      error: function(e) {
+        console.log(e.message);
+        swal("Cập nhật khóa học không thành công", {
+          icon: "warning",
+        });
+      },
+      success: function(data) {
+        $('[data-id="' + data.id + '"] .courses-column-2').html(data.courseName);
+        $('[data-id="' + data.id + '"] .courses-column-4').html(data.description);
+        swal("Cập nhật khóa học thành công", {
+          icon: "success",
+        });
+        console.log(data);
+      }
+    });
+    $('#update-course-modal').css('display', 'none');
+  });
+
+  $('#course-img-file').on('change', function() {
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+      $('#load-course-image').prop('src', reader.result);
     }
+    reader.readAsDataURL(this.files[0]);
   });
-  $('#update-course-modal').css('display', 'none');
-  swal("Cập nhật khóa học thành công", {
-    icon: "success",
+
+  $('#update-img-form').submit(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    console.log(id);
+    var image = $('#course-img-file').prop('files')[0];
+    var fd = new FormData();
+    fd.append('courseId', id);
+    fd.append('file', image);
+    $.ajax({
+      url: 'https://teaching-online-lms.herokuapp.com/api/admin/upload-banner-course',
+      type: 'POST',
+      headers: {
+        'Authorization': sessionStorage.getItem('admin_token')
+      },
+      data: fd,
+      contentType: false,
+      processData: false,
+      dataType: 'json',
+      error: function(e) {
+        swal("Cập nhật ảnh bìa không thành công", {
+          icon: "warning"
+        });
+      },
+      success: function(data) {
+        $('[data-id="' + id + '"] .update-img-btn').attr('data-src', data.url);
+        alert('Cập nhật ảnh bìa thành công');
+        location.reload();
+      }
+    });
+    $('#update-img-modal').css('display', 'none');
   });
-});
 })

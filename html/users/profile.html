@@ -73,9 +73,33 @@
               <div class="u-user-profile tab-content show-inline" id="u-course-teacher">
                 <h3>Thông tin cá nhân</h3>
                 <div class="user-profile-update">
+                  <div class="title-user">Tải ảnh đại diện</div>
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="user-avatar-image">
+                        <img alt="" id="load-user-image">
+                      </div>
+                    </div>
+                    <div class="col-lg-9">
+                      <form id="update-img-form">
+                        <div class="form-group">
+                          <span>Tải ảnh lên</span>
+                          <div class="custom-file-image">
+                            <input type="file" id="user-img-file" class="input-custom" hidden="" accept="image/*">
+                            <label class="label-custom" for="user-img-file">Chọn</label>
+                            <span class="font-italic font13">Chấp nhận GIF, JPEG, PNG, BMP với kích thước tối đa 5.0 MB</span>
+                          </div>
+                        </div>
+                        <button class="btn update-img-btn" type="submit">Cập nhật</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="user-profile-update">
                   <form id="update-profile-form">
+                    <div class="title-user">Thay đổi thông tin</div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-2 profile-label fl-left">Tên đăng nhập</div>
+                      <div class="col-lg-3 profile-label fl-left">Tên đăng nhập</div>
                       <div class="col-lg-4 fl-left">
                         <div class="input-group">
                           <div class="profile-text" id="username"></div>
@@ -83,7 +107,7 @@
                       </div>
                     </div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-2 profile-label fl-left">Email</div>
+                      <div class="col-lg-3 profile-label fl-left">Email</div>
                       <div class="col-lg-4 fl-left">
                         <div class="input-group">
                           <div class="profile-text" id="email-address"></div>
@@ -91,7 +115,7 @@
                       </div>
                     </div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-2 profile-label fl-left">Họ tên</div>
+                      <div class="col-lg-3 profile-label fl-left">Họ tên</div>
                       <div class="col-lg-4 fl-left">
                         <div class="input-group">
                           <input name="fullname" placeholder="Họ và tên" type="text" class="form-control" value="">
@@ -99,7 +123,7 @@
                       </div>
                     </div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-2 profile-label fl-left">Địa chỉ</div>
+                      <div class="col-lg-3 profile-label fl-left">Địa chỉ</div>
                       <div class="col-lg-4 fl-left" >
                         <div class="input-group">
                           <input name="address" placeholder="Địa chỉ" type="text" class="form-control" value="">
@@ -107,7 +131,7 @@
                       </div>
                     </div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-2 profile-label fl-left">Số điện thoại</div>
+                      <div class="col-lg-3 profile-label fl-left">Số điện thoại</div>
                       <div class="col-lg-4 fl-left">
                         <div class="input-group">
                           <input name="phonenumber" placeholder="Số điện thoại" type="text" class="form-control" value="">
@@ -115,7 +139,7 @@
                       </div>
                     </div>
                     <div class="form-group align-items-center clearfix">
-                      <div class="col-lg-6 profile-label fl-left">
+                      <div class="col-lg-7 profile-label fl-left">
                         <button type="submit" class="btn save-change-btn">
                           Lưu thay đổi
                         </button>

@@ -1610,6 +1610,7 @@ input[type=checkbox], input[type=radio] {
 
 .account-item .image img {
   width: 100%;
+  border-radius: 50%;
 }
 
 .account-item > .content {
@@ -1620,7 +1621,6 @@ input[type=checkbox], input[type=radio] {
 
 .account-item > .content > a {
   color: #333;
-  text-transform: capitalize;
   font-weight: 500;
 }
 
@@ -1677,6 +1677,7 @@ input[type=checkbox], input[type=radio] {
 
 
 .account-dropdown .info .image {
+  margin-top: 15px;
   float: left;
   height: 65px;
   width: 65px;
@@ -1701,7 +1702,6 @@ input[type=checkbox], input[type=radio] {
 .account-dropdown .info .content .name a {
   color: #333;
   font-size: 20px;
-  text-transform: capitalize;
 }
 
 .account-dropdown .info .content .email {
@@ -1797,11 +1797,13 @@ input[type=checkbox], input[type=radio] {
 }
 
 /* user profile */
+.user-profile-update {
+  padding: 30px;
+  position: relative;
+}
+
 .user-profile-update, .user-change-password {
   padding-top: 30px;
-}
-.user-profile-update .form-group, .user-change-password .form-group {
-  padding-left: 30px;
 }
 
 .user-change-password .col-lg-3 {
@@ -1810,6 +1812,87 @@ input[type=checkbox], input[type=radio] {
 
 .user-change-password .col-lg-7 {
   width: 53.3333333%
+}
+
+.user-profile-update .row {
+  display: flex;
+}
+
+.user-profile-update .title-user {
+  font-weight: 700;
+  font-size: 100%;
+  color: #4073a7;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.user-profile-update .user-avatar-image {
+  width: 115px;
+  height: 115px;
+  margin: auto;
+}
+
+.user-profile-update .user-avatar-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.user-profile-update form {
+  padding-top: 15px;
+}
+
+.user-profile-update .custom-file-image {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+[hidden] {
+  display: none!important;
+}
+
+.custom-file-image .label-custom {
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #ebebeb;
+  text-transform: capitalize;
+  padding: 3px 18px 4px;
+  border-radius: 3px;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.user-profile-update .custom-file-image {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.font-italic {
+  font-style: italic!important;
+}
+
+.font13 {
+  font-size: 13px!important;
+}
+
+.update-img-btn {
+  background-color: #0468D1;
+  color: #fff;
+}
+
+.user-profile-update:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  right: 30px;
+  height: 1px;
+  background-color: #d7d7d7;
+}
+
+.user-profile-update:last-child:after {
+  height: 0;
 }
 
 .user-change-password .confirm-message {
@@ -1846,6 +1929,8 @@ input[type=checkbox], input[type=radio] {
 .user-nav i {
   padding-bottom: 6px;
 }
+
+.
 
 /* reset password */
 .resetpass-wrap {
