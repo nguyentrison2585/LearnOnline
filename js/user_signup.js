@@ -28,9 +28,8 @@ $(document).ready(function() {
           },
           dataType: 'json',
           error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-            $('#user-signup-alert').html("Username or password are not correct!");
+            var err = JSON.parse(xhr.responseText);
+            $('#user-signup-alert').html(err.message);
             $('#user-signup-alert').addClass('alert-danger');
             window.scrollTo(0, 0);
           },

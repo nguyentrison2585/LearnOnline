@@ -66,8 +66,14 @@ $(document).ready(function() {
           $('#acc-btn-name').html(data.username);
           $('#dropdown-acc-name').html(data.username);
           $('#dropdown-acc-email').html(data.email);
-          $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
-          $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+          if (data.avatar != null) {
+            $('#user-img-header').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+            $('#user-img-dropdown').prop('src', 'https://teaching-online-lms.herokuapp.com' + data.avatar);
+          }
+          else {
+            $('#user-img-header').prop('src', '../../images/default-avatar.png');
+            $('#user-img-dropdown').prop('src', '../../images/default-avatar.png');
+          }
           console.log(data);
         },
         type: 'GET'
@@ -110,7 +116,7 @@ $(document).ready(function() {
       </div>
       <div class="account-dropdown__item">
       <a href="teaching_schedule.html">
-      <i class="far fa-calendar-alt"></i>Lịch dạy của tôi
+      <i class="far fa-calendar-alt"></i>Khóa học của tôi
       </a>
       </div>
       </div>

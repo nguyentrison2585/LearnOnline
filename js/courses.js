@@ -62,44 +62,35 @@ $(document).ready(function() {
     success: function(data) {
       $($('.p-or')[0]).html(data.length);
       for(let i = 0;i < data.length;i++) {
+        if (data[i].image == null) {
+          data[i].image = '../../images/default-banner.png'
+        }
+        else {
+          data[i].image = 'https://teaching-online-lms.herokuapp.com' + data[i].image
+        }
         var course_block = `<li>
-                    <div class="box-pop ">
-                      <a href="course_detail.html?courseId=${data[i].id}" class="course-box-slider pop" data-placement="right" data-toggle="popover" data-container="body" data-html="true" data-original-title="Nuôi dạy con " title="">
-                        <div class="img-course">
-                          <img style="max-height:110px;width:100%;" class="img-responsive " src="../../images/course-img.jpg" alt="19 Tuyệt chiêu nuôi dạy con thành tài">
-                        </div>
-                        <div class="content-course">
-                          <h3 class="title-course" style="font-size:15px;overflow: hidden;margin-top: 8px;height: 44px;"><span>19 ${data[i].name}</span></h3>
-                          <div class="name-gv">
-                            <b>
-                            Đào Ngọc Cường                                    </b>
-                          </div>
-                          <div class="rate-course" style="display: inline-block;" itemscope="">
-                            <span class="star-rate">
-                              <i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i>                </span>
-                              <span class="n-rate">(<span>28</span>)</span>
-                            </div>
-                          </div>
-                       </a>
-                       <div id="popover-content" class="pop-course hide">
-                        <div class="title-pop-course">19 Tuyệt chiêu nuôi dạy con thành tài</div>
-                        <div class="cate-course"></div>
-                        <div class="time-course">
-                          <ul>
-                            <li><i class="fas fa-list-alt" aria-hidden="true"></i> 20 bài giảng</li>
-                            <li><i class="fas fa-clock" aria-hidden="true"></i> 01 giờ 59 phút</li>
-                          </ul>
-                        </div>
-                        <div class="des-gv-pop">CEO Đánh Thức Tiềm Năng Việt </div>
-                        <div class="des-course">
-                        Lắng nghe con, phát triển điểm mạnh của con, gần gũi với con cái, thấu hiểu con cái để nuôi dạy con tốt nhất            </div>
-                        <a onclick="addcart(this)" data-id="2i%2BH6q4BKzvKy3fwhMEzWw%3D%3D" class="btn-add-cart" href="javascript:void(0)">XEM CHI TIẾT</a>
-                      </div>
-                    </div>
-                  </li>`
+          <div class="box-pop ">
+            <a href="course_detail.html?courseId=${data[i].id}" class="course-box-slider pop" data-placement="right" data-toggle="popover" data-container="body" data-html="true" data-original-title="Nuôi dạy con " title="">
+              <div class="img-course">
+                <img class="img-responsive " src="${data[i].image}" alt="19 Tuyệt chiêu nuôi dạy con thành tài">
+              </div>
+              <div class="content-course">
+                <h3 class="title-course" style="font-size:15px;overflow: hidden;margin-top: 8px;height: 44px;"><span>${data[i].name}</span></h3>
+                <div class="name-gv">
+                  <b>${data[i].teacher}</b>
+                </div>
+                <div class="rate-course" style="display: inline-block;" itemscope="">
+                  <span class="star-rate">
+                    <i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i>                </span>
+                    <span class="n-rate">(<span>28</span>)</span>
+                  </div>
+                </div>
+             </a>
+          </div>
+        </li>`
         $('#courses-list').append(course_block);
       }
-      console.log(subjectId);
+      console.log(data);
     },
     type: 'GET'
   });

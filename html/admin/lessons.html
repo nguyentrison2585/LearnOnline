@@ -285,11 +285,8 @@
                         <th class="courses-column-2">Lesson Name</th>
                         <th class="courses-column-3">Course</th>
                         <th class="courses-column-4">Description</th>
-                        <th class="courses-column-5">Time Start</th>
-                        <th class="courses-column-6">Stream URL</th>
-                        <th class="courses-column-7">Off URL</th>
-                        <th class="courses-column-8">Status</th>
-                        <th class="courses-column-9"></th>
+                        <th class="courses-column-5">URL</th>
+                        <th class="courses-column-6"></th>
                       </tr>
                     </thead>
                     <tbody id="lessons-table-content">
@@ -327,10 +324,6 @@
               <label for="newls-description" class="form-control-label">Description</label>
               <input type="text" id="new-description" name="newls-description" placeholder="Description" class="form-control">
             </div>
-            <div class="form-group">
-              <label for="start-time" class="form-control-label">Time start</label>
-              <input type="datetime-local" class="form-control" id="newls-start-time" name="start-time"  required>
-            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary close-newls-modal-btn" data-dismiss="modal">Cancel</button>
@@ -364,16 +357,8 @@
               <input type="text" id="update-description" name="updatels-description" placeholder="Description" class="form-control">
             </div>
             <div class="form-group">
-              <label for="updatels-starttime" class="form-control-label">Time start</label>
-              <input type="datetime-local" class="form-control" id="update-start-time" name="updatels-starttime"required>
-            </div>
-            <div class="form-group">
-              <label for="updatels-streamurl" class="form-control-label">Stream URL</label>
-              <input type="text" id="update-streamurl" name="updatels-streamurl" placeholder="Description" class="form-control">
-            </div>
-            <div class="form-group">
               <label for="updatels-offliveurl" class="form-control-label">Offline URL</label>
-              <input type="text" id="update-offliveurl" name="updatels-offliveurl" placeholder="Description" class="form-control">
+              <input type="text" id="update-offliveurl" name="updatels-offliveurl" placeholder="URL" class="form-control">
             </div>
           </div>
           <div class="modal-footer">

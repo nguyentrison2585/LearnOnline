@@ -14,9 +14,6 @@ $(document).ready(function() {
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
-        if (data[i].liveStreamUrl == null) {
-          data[i].liveStreamUrl = 'Chưa có';
-        }
         if (data[i].offlineUrl == null) {
           data[i].offlineUrl = 'Chưa có';
         }
@@ -28,13 +25,8 @@ $(document).ready(function() {
         <span class="block-email">${data[i].courseName}</span>
         </td>
         <td class="courses-column-4">${data[i].description}</td>
-        <td class="courses-column-5">${data[i].timeStart.substring(0, 16)}</td>
-        <td class="courses-column-6">${data[i].liveStreamUrl}</td>
-        <td class="courses-column-7">${data[i].offlineUrl}</td>
-        <td class="courses-column-8">
-        <span class="status--process">Processing</span>
-        </td>
-        <td class="courses-column-9">
+        <td class="courses-column-5">${data[i].offlineUrl}</td>
+        <td class="courses-column-6">
         <div class="table-data-feature">
         <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
         <i class="fas fa-pen"></i>
@@ -61,18 +53,11 @@ $(document).ready(function() {
         $('#update-lesson-name').val(row.find('.courses-column-2').html());
         $('#update-lesson-course').val(row.find('.courses-column-3 span').html());
         $('#update-description').val(row.find('.courses-column-4').html());
-        $('#update-start-time').val(row.find('.courses-column-5').html());
-        if (row.find('.courses-column-6').html() == 'Chưa có') {
-          $('#update-streamurl').val('');
-        }
-        else {
-          $('#update-streamurl').val(row.find('.courses-column-6').html());
-        }
-        if (row.find('.courses-column-7').html() == 'Chưa có') {
+        if (row.find('.courses-column-5').html() == 'Chưa có') {
           $('#update-offliveurl').val('');
         }
         else {
-          $('#update-offliveurl').val(row.find('.courses-column-7').html());
+          $('#update-offliveurl').val(row.find('.courses-column-5').html());
         }
         $('#update-lesson-form').attr('data-id', row.attr('data-id'));
       });
@@ -167,7 +152,7 @@ $('#new-lesson-form').submit(function(e) {
   e.preventDefault();
   var course_id = $('#newls-course-id').find(":selected").val();
   var lesson_name = $('#new-lesson-name').val();
-  var start_time = new Date($('#newls-start-time').val()).getTime();
+  var start_time = new Date().getTime();
   console.log(start_time);
   var description = $('#new-description').val();
   console.log(course_id + lesson_name + description);
@@ -199,13 +184,8 @@ $('#new-lesson-form').submit(function(e) {
       <span class="block-email">${data.courseName}</span>
       </td>
       <td class="courses-column-4">${data.description}</td>
-      <td class="courses-column-5">${data.timeStart.substring(0, 16)}</td>
-      <td class="courses-column-6">Chưa có</td>
-      <td class="courses-column-7">Chưa có</td>
-      <td class="courses-column-8">
-      <span class="status--process">Processing</span>
-      </td>
-      <td class="courses-column-9">
+      <td class="courses-column-5">Chưa có</td>
+      <td class="courses-column-6">
       <div class="table-data-feature">
       <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
       <i class="fas fa-pen"></i>
@@ -230,18 +210,11 @@ $('#new-lesson-form').submit(function(e) {
         $('#update-lesson-name').val(row.find('.courses-column-2').html());
         $('#update-lesson-course').val(row.find('.courses-column-3 span').html());
         $('#update-description').val(row.find('.courses-column-4').html());
-        $('#update-start-time').val(row.find('.courses-column-5').html());
-        if (row.find('.courses-column-6').html() == 'Chưa có') {
-          $('#update-streamurl').val('');
-        }
-        else {
-          $('#update-streamurl').val(row.find('.courses-column-6').html());
-        }
-        if (row.find('.courses-column-7').html() == 'Chưa có') {
+        if (row.find('.courses-column-5').html() == 'Chưa có') {
           $('#update-offliveurl').val('');
         }
         else {
-          $('#update-offliveurl').val(row.find('.courses-column-7').html());
+          $('#update-offliveurl').val(row.find('.courses-column-5').html());
         }
         $('#update-lesson-form').attr('data-id', row.attr('data-id'));
       });
@@ -306,9 +279,9 @@ $('#new-lesson-form').submit(function(e) {
     var lesson_name = $('#update-lesson-name').val();
     console.log(lesson_name);
     var description = $('#update-description').val();
-    var time_start = new Date($('#update-start-time').val()).getTime();
+    var time_start = new Date().getTime();
     console.log(time_start);
-    var streamurl = $('#update-streamurl').val();
+    var streamurl = '';
     var offliveurl = $('#update-offlineurl').val();
     $.ajax({
       url: 'https://teaching-online-lms.herokuapp.com/api/admin/update-lesson',
@@ -336,9 +309,7 @@ $('#new-lesson-form').submit(function(e) {
       success: function(data) {
         $('[data-id="' + data.id + '"] .courses-column-2').html(data.lessonName);
         $('[data-id="' + data.id + '"] .courses-column-4').html(data.description);
-        $('[data-id="' + data.id + '"] .courses-column-5').html(time_start);
-        $('[data-id="' + data.id + '"] .courses-column-6').html(streamurl);
-        $('[data-id="' + data.id + '"] .courses-column-7').html(offliveurl);
+        $('[data-id="' + data.id + '"] .courses-column-5').html(offliveurl);
         console.log(data);
       }
     });

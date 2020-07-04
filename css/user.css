@@ -867,6 +867,9 @@ ol, ul {
 }
 
 .img-course img {
+  max-height: 130px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
   border-radius: 3px 3px 0 0;
 }
 
@@ -2010,6 +2013,7 @@ input[type=checkbox], input[type=radio] {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
+  margin-bottom: 10px;
 }
 
 .quizitem .quizitem-heading {
@@ -2033,14 +2037,14 @@ input[type=checkbox], input[type=radio] {
   float: right;
 }
 
-.quizitem.open .quizitem-heading .indicator {
+.quizitem .quizitem-heading .indicator {
   background-color: #fff;
   cursor: pointer;
   color: #000;
   margin-top: 5px;
 }
 
-.quizitem.open .quizitem-heading .indicator:hover {
+.quizitem .quizitem-heading .indicator:hover {
   background-color: #ddd;
 }
 
@@ -2100,6 +2104,31 @@ input[type=checkbox], input[type=radio] {
   margin-bottom: 10px;
 }
 
+.upload-file-row {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.upload-file-row .col-lg-5 {
+  border: 1px solid #ccc;
+}
+
+.upload-file-row .lesson-file-block {
+  width: 100%;
+  height: 150px;
+  margin: auto;
+  text-align: center;
+}
+
+.upload-file-row .file-name {
+  text-align: center;
+
+}
+
+.upload-file-row .lesson-file-block img {
+  width: 100px;
+}
+
 .quizitem .quizitem-body textarea {
   height: 80px;
 }
@@ -2122,6 +2151,7 @@ input[type=checkbox], input[type=radio] {
 
 .lb {
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .preview-video iframe {
