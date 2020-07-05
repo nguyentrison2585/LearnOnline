@@ -9,6 +9,7 @@ if (setupTime == null) {
     sessionStorage.setItem('setupTime', now);
   }
 }
+
 if (sessionStorage.getItem('admin_token') === null) {
   window.location.href = 'login.html';
   alert('Bạn chưa đăng nhập hoặc phiên đăng nhập đã hết hạn');

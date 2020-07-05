@@ -10,6 +10,7 @@ if (setupTime == null) {
   }
 }
 if (sessionStorage.getItem("user_token") === null) {
+  sessionStorage.setItem('previous_url', window.location.href);
   window.location.href = 'login.html';
   alert('Bạn chưa đăng nhập hoặc phiên đăng nhập đã hết hạn');
 }

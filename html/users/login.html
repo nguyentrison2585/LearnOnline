@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="../../css/user.css">
   <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/search_form.js"></script>
   <script type="text/javascript" src="../../js/user_login.js"></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
               </div>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
-              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+              <form class="unica-search-boxtop navbar-form form-inline" id="search-form">
                 <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
                 <button type="submit" class="btn unica-btn-search">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -69,7 +70,7 @@
               <div class="form-group clearfix">
                 <div class="loginpage-form__remember float-left">
                   <label class="loginpage-form__remember-checkbox">
-                    Nhớ mật khẩu
+                    Nhớ tài khoản
                     <input type="checkbox" checked="checked">
                     <span class="login-checkmark"></span>
                   </label>
@@ -92,6 +93,9 @@
             </div>
           </div>
         </form>
+        <div class="signup-block">Bạn chưa có tài khoản?
+          <a class="signup-link" href="signup.html">Đăng ký</a>
+        </div>
       </div>
     </div>
   </div>

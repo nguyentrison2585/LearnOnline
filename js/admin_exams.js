@@ -112,10 +112,10 @@ $(document).ready(function() {
 
                 $('.btn-quiz-del').click(function() {
                   swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this question!",
+                    title: "Bạn đã chắc chắn?",
+                    text: "Sau khi xóa bạn sẽ không thể khôi phục câu hỏi!",
                     icon: "warning",
-                    buttons: ["Stop", "Delete it"],
+                    buttons: ["Dừng lại", "Tiếp tục"],
                     dangerMode: true,
                     timer: 5000,
                   })
@@ -135,7 +135,7 @@ $(document).ready(function() {
                         dataType: 'json',
                         error: function(e) {
                           console.log(e.message);
-                          swal("Error when delete the lesson!", {
+                          swal("Xóa câu hỏi không thành công!", {
                             icon: "warning",
                           });
                         },
@@ -145,14 +145,14 @@ $(document).ready(function() {
                             $(no_cell).html(parseInt($(no_cell).html()) - 1)
                           }
                           btn.parent().parent().parent().remove();
-                          swal("Poof! The question has been deleted!", {
+                          swal("Câu hỏi đã bị xóa!", {
                             icon: "success",
                           });
                           console.log(data);
                         }
                       });
                     } else {
-                      swal("The question is safe!");
+                      swal("Câu hỏi đã được giữ lại!");
                     }
                   });
                 });
@@ -224,10 +224,14 @@ $(document).ready(function() {
                   dataType: 'json',
                   error: function(e) {
                     console.log(e.message);
-                    alert('Subject name has existed!');
+                    swal("Cập nhật câu hỏi không thành công!", {
+                      icon: "danger",
+                    });
                   },
                   success: function(data) {
-                    console.log(data);
+                    swal("Cập nhật câu hỏi thành công!", {
+                      icon: "success",
+                    });
                   }
                 });
               });
@@ -307,7 +311,9 @@ $(document).ready(function() {
       dataType: 'json',
       error: function(e) {
         console.log(e.message);
-        alert('Subject name has existed!');
+        swal("Tạo mới câu hỏi không thành công!", {
+          icon: "danger",
+        });
       },
       success: function(data) {
         var number_rows = $('#questions-list .quizitem').length;
@@ -362,12 +368,52 @@ $(document).ready(function() {
 
         $($('input[name="correct-answer-' + (number_rows) + '"]')[data.result]).attr('checked', true);
 
+        $($('.update-question-btn')[$('.update-question-btn').length-1]).click(function() {
+          var index =  $('.update-question-btn').index(this);
+          var id = $(this).attr('data-id');
+          var question = $($('.quiz-content-input')[index]).val();
+          var answers = [];
+          $('input[name="answer-text-' + index + '"]').each(function() {
+            answer = $(this).val();
+            answers.push(answer);
+          })
+          console.log(answers);
+          var radio_result = $('input[name="correct-answer-' + index + '"]');
+          var result = radio_result.index(radio_result.filter(':checked'));
+          console.log(result);
+          $.ajax({
+            url: 'https://teaching-online-lms.herokuapp.com/api/exam/update-examination',
+            type: 'POST',
+            headers: {
+              'Authorization': sessionStorage.getItem('admin_token')
+            },
+            data: {
+              id: id,
+              question: question,
+              answers: answers,
+              result: result
+            },
+            dataType: 'json',
+            error: function(e) {
+              console.log(e.message);
+              swal("Cập nhật câu hỏi không thành công!", {
+                icon: "danger",
+              });
+            },
+            success: function(data) {
+              swal("Cập nhật câu hỏi thành công!", {
+                icon: "success",
+              });
+            }
+          });
+        });
+
         $($('.btn-quiz-del')[$('.btn-quiz-del').length-1]).click(function() {
           swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this question!",
+            title: "Bạn đã chắc chắn?",
+            text: "Sau khi xóa bạn sẽ không thể khôi phục câu hỏi!",
             icon: "warning",
-            buttons: ["Stop", "Delete it"],
+            buttons: ["Dừng lại", "Tiếp tục"],
             dangerMode: true,
             timer: 5000,
           })
@@ -387,7 +433,9 @@ $(document).ready(function() {
                 dataType: 'json',
                 error: function(e) {
                   console.log(e.message);
-                  alert('Subject name has existed!');
+                  swal("Xóa câu hỏi không thành công!", {
+                    icon: "warning",
+                  });
                 },
                 success: function(data) {
                   for (let i = $('.btn-quiz-del').index(btn) + 1; i < $('.btn-quiz-del').length; i++) {
@@ -395,19 +443,23 @@ $(document).ready(function() {
                     $(no_cell).html(parseInt($(no_cell).html()) - 1)
                   }
                   btn.parent().parent().parent().remove();
-                  swal("Poof! The question has been deleted!", {
+                  swal("Câu hỏi đã bị xóa!", {
                     icon: "success",
                   });
                   console.log(data);
                 }
               });
             } else {
-              swal("The question is safe!");
+              swal("Câu hỏi đã được giữ lại!");
             }
           });
         });
         console.log(data);
+        swal("Tạo mới câu hỏi thành công!", {
+          icon: "success",
+        });
       }
     });
+    $('#add-question-modal').css('display', 'none');
   });
 })

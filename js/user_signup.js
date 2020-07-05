@@ -51,16 +51,16 @@ $(document).ready(function() {
             email: email
           },
           dataType: 'json',
-          error: function(e) {
-            $('#user-signup-alert').html("Username or password are not correct!");
+          error: function(xhr, status, error) {
+            var err = JSON.parse(xhr.responseText);
+            $('#user-signup-alert').html(err.message);
             $('#user-signup-alert').addClass('alert-danger');
             window.scrollTo(0, 0);
           },
           success: function(data) {
-            sessionStorage.setItem('user_token', data.token);
-            sessionStorage.setItem('user_role', 1);
-            sessionStorage.setItem('setupTimeUser', new Date().getTime());
-            window.location.href = 'home.html';
+            $('#user-signup-alert').html('Tạo tài khoản thành công, hãy kiểm tra Email để kích hoạt tài khoản của bạn!');
+            $('#user-signup-alert').addClass('alert-success');
+            window.scrollTo(0, 0);
           }
         });
       }

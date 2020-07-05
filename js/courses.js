@@ -43,7 +43,7 @@ $(document).ready(function() {
         if ($(subjects[i]).attr('data-id') == subjectId.subjectId[0]) {
           $(subjects[i]).addClass('active');
           $('#subject-name').html(data[i].name)
-          document.title = 'Khóa học' + data[i].name;
+          document.title = 'Các khóa học ' + data[i].name;
         }
       }
       console.log(data);
@@ -54,13 +54,16 @@ $(document).ready(function() {
   $.ajax({
     url: 'https://teaching-online-lms.herokuapp.com/api/user/courses',
     dataType: 'json',
-    data: {subjectId: subjectId.subjectId[0]},
+    data: {
+      subjectId: subjectId.subjectId[0]
+    },
     error: function(e) {
       alert('Đã có lỗi xảy ra khi lấy dữ liệu');
       console.log(e);
     },
     success: function(data) {
       $($('.p-or')[0]).html(data.length);
+
       for(let i = 0;i < data.length;i++) {
         if (data[i].image == null) {
           data[i].image = '../../images/default-banner.png'
@@ -70,21 +73,16 @@ $(document).ready(function() {
         }
         var course_block = `<li>
           <div class="box-pop ">
-            <a href="course_detail.html?courseId=${data[i].id}" class="course-box-slider pop" data-placement="right" data-toggle="popover" data-container="body" data-html="true" data-original-title="Nuôi dạy con " title="">
+            <a href="course_detail.html?courseId=${data[i].id}" class="course-box-slider pop" data-placement="right" data-toggle="popover" data-container="body" data-html="true" title="">
               <div class="img-course">
-                <img class="img-responsive " src="${data[i].image}" alt="19 Tuyệt chiêu nuôi dạy con thành tài">
+                <img class="img-responsive " src="${data[i].image}" alt="Course image">
               </div>
               <div class="content-course">
                 <h3 class="title-course" style="font-size:15px;overflow: hidden;margin-top: 8px;height: 44px;"><span>${data[i].name}</span></h3>
                 <div class="name-gv">
                   <b>${data[i].teacher}</b>
                 </div>
-                <div class="rate-course" style="display: inline-block;" itemscope="">
-                  <span class="star-rate">
-                    <i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i><i class="fas fa-star co-or" aria-hidden="true"></i>                </span>
-                    <span class="n-rate">(<span>28</span>)</span>
-                  </div>
-                </div>
+              </div>
              </a>
           </div>
         </li>`

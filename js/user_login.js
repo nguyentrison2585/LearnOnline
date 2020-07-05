@@ -26,9 +26,9 @@ $(document).ready(function() {
           password: password
         },
         dataType: 'json',
-        error: function(e) {
-          console.log(e.message);
-          $('#user-login-alert').html('Username or password incorrect!');
+        error: function(xhr, status, error) {
+          var err = JSON.parse(xhr.responseText);
+          $('#user-login-alert').html(err.message);
           $('#user-login-alert').addClass('alert-danger');
           window.scrollTo(0, 0);
         },
@@ -36,7 +36,14 @@ $(document).ready(function() {
           sessionStorage.setItem('user_token', data.token);
           sessionStorage.setItem('user_role', 0);
           sessionStorage.setItem('setupTimeUser', new Date().getTime());
-          window.location.href = 'home.html';
+          if (sessionStorage.getItem('previous_url') === null) {
+            window.location.href = 'home.html';
+          }
+          else
+          {
+            window.location.href = sessionStorage.getItem('previous_url').replace(/.*[\/\\]/, '');
+            sessionStorage.removeItem('previous_url')
+          }
         }
       });
     }
@@ -59,9 +66,17 @@ $(document).ready(function() {
           sessionStorage.setItem('user_token', data.token);
           sessionStorage.setItem('user_role', 1);
           sessionStorage.setItem('setupTimeUser', new Date().getTime());
-          window.location.href = 'home.html';
+          if (sessionStorage.getItem('previous_url') === null) {
+            window.location.href = 'home.html';
+          }
+          else
+          {
+            window.location.href = sessionStorage.getItem('previous_url').replace(/.*[\/\\]/, '');
+            sessionStorage.removeItem('previous_url');
+          }
         }
       });
     }
+
   });
 });

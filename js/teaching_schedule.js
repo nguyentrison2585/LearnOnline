@@ -69,7 +69,6 @@ $(document).ready(function() {
         </div>
       </div>`
       $('#list-lessons').append(lesson);
-      $($('.quiz-content-input')[i]).val(iframe);
     }
 
     $('.indicator').click(function() {
@@ -143,6 +142,7 @@ $(document).ready(function() {
       link = srcWithQuotes.substring(1,srcWithQuotes.length - 1);
       console.log(link);
       var iframe = `<iframe id="preview-video-frame" src ="${link}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+      $($(this).next().find('.preview-block')[0]).empty();
       $($(this).next().find('.preview-block')[0]).append(iframe);
 
       var id = $(this).attr('data-id');

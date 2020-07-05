@@ -14,4 +14,19 @@ $(document).ready(function() {
       $('#number-teachers').html(data.length)
     }
   });
+  $.ajax({
+    url: 'https://teaching-online-lms.herokuapp.com/api/user/courses',
+    type: 'GET',
+    headers: {
+      'Authorization': sessionStorage.getItem('admin_token')
+    },
+    dataType: 'json',
+    error: function(e) {
+      console.log(e.message);
+    },
+    success: function(data) {
+      console.log(data);
+      $('#number-courses').html(data.length)
+    }
+  });
 })

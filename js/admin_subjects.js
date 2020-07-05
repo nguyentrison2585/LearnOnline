@@ -52,10 +52,10 @@ $(document).ready(function() {
 
       $('.delete-btn').click(function() {
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this subject!",
+          title: "Bạn đã chắc chắn?",
+          text: "Sau khi xóa bạn sẽ không thể khôi phục lĩnh vực!",
           icon: "warning",
-          buttons: ["Stop", "Delete it"],
+          buttons: ["Dừng lại", "Tiếp tục"],
           dangerMode: true,
           timer: 5000,
         })
@@ -76,12 +76,12 @@ $(document).ready(function() {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                swal("Error when delete the subject!", {
+                swal("Xóa lĩnh vực không thành công!", {
                   icon: "warning",
                 });
               },
               success: function(data) {
-                swal("Poof! The subject has been deleted!", {
+                swal("Lĩnh vực đã bị xóa!", {
                   icon: "success",
                 });
                 for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
@@ -93,7 +93,7 @@ $(document).ready(function() {
               }
             });
           } else {
-            swal("The subject is safe!");
+            swal("Lĩnh vực đã được giữ lại!");
           }
         });
       });
@@ -139,7 +139,7 @@ $(document).ready(function() {
         var subject_row = `<tr class="tr-shadow" data-id="${data.id}">
         <td class="courses-column-1">${number_rows+1}</td>
         <td class="courses-column-2">${data.subjectName}</td>
-        <td class="courses-column-3">${data.description}</td>
+        <td class="courses-column-3">${description}</td>
         <td class="courses-column-4">
         <span class="status--process">Processing</span>
         </td>
@@ -175,10 +175,10 @@ $(document).ready(function() {
 
         $($('.delete-btn')[$('.delete-btn').length-1]).click(function() {
           swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this subject!",
+            title: "Bạn đã chắc chắn?",
+            text: "Sau khi xóa bạn sẽ không thể khôi phục lĩnh vực!",
             icon: "warning",
-            buttons: ["Stop", "Delete it"],
+            buttons: ["Dừng lại", "Tiếp tục"],
             dangerMode: true,
             timer: 5000,
           })
@@ -198,12 +198,12 @@ $(document).ready(function() {
                 dataType: 'json',
                 error: function(e) {
                   console.log(e.message);
-                  swal("Error when delete the subject!", {
+                  swal("Xóa lĩnh vực không thành công!", {
                     icon: "warning",
                   });
                 },
                 success: function(data) {
-                  swal("Poof! The subject has been deleted!", {
+                  swal("Lĩnh vực đã bị xóa!", {
                     icon: "success",
                   });
                   for (let i = $('.delete-btn').index(btn) + 1; i < $('.delete-btn').length; i++) {
@@ -215,7 +215,7 @@ $(document).ready(function() {
                 }
               });
             } else {
-              swal("The subject is safe!");
+              swal("Lĩnh vực đã được giữ lại!");
             }
           });
         });

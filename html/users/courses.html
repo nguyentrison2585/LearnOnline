@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="../../js/check_user.js"></script>
   <script type="text/javascript" src="../../js/user.js"></script>
+  <script type="text/javascript" src="../../js/search_form.js"></script>
   <script type="text/javascript" src="../../js/courses.js"></script>
 </head>
 <body>
@@ -25,7 +26,7 @@
               </div>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-5 cate-sm">
-              <form class="unica-search-boxtop navbar-form form-inline" method="GET" action="/search">
+              <form class="unica-search-boxtop navbar-form form-inline" id="search-form">
                 <input autocomplete="off" name="key" type="text" class="form-control unica-form" placeholder="Tìm khóa học, giảng viên bạn quan tâm">
                 <button type="submit" class="btn unica-btn-search">
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -69,7 +70,7 @@
           </div>
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-content" style="">
             <div class="u-all-course">
-              <h1 style="font-size: 20px;font-family: inherit;line-height: 1.1;color: inherit;margin-top: 0px;">Khóa học Ngoại ngữ </h1>
+              <h1 style="font-size: 20px;font-family: inherit;line-height: 1.1;color: inherit;margin-top: 0px;">Khóa học <span id="subject-name"></span></h1>
               <h3>Tất cả [ <span class="p-or"></span> <p> khóa học</p> ]</h3>
               <style>
                 .box-teacher .slick-next:before,.box-teacher .slick-prev:before{color: #F37E65 !important;}

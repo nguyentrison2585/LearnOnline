@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Đăng ký</title>
+  <title>Tìm kiếm khóa học</title>
   <link rel="stylesheet" type="text/css" href="../../css/user.css">
   <link href="../../fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/check_user.js"></script>
+  <script type="text/javascript" src="../../js/user.js"></script>
   <script type="text/javascript" src="../../js/search_form.js"></script>
-  <script type="text/javascript" src="../../js/user_signup.js"></script>
+  <script type="text/javascript" src="../../js/search.js"></script>
 </head>
 <body>
   <header>
@@ -32,9 +34,7 @@
               </form>
             </div>
             <div class="col-lg-5 col-md-4 col-sm-5 cate-sm">
-              <ul class="unica-acc-zone">
-                <li><a class="unica-reg-acc" href="login.html">Đăng nhập</a></li>
-                <li><a class="unica-log-acc" href="">Đăng ký</a></li>
+              <ul class="unica-acc-zone" id="user-account-zone">
               </ul>
             </div>
           </div>
@@ -42,59 +42,24 @@
       </div>
     </div>
   </header>
-  <div class="container">
-    <div class="login-wrap">
-      <div class="loginpage-left-banner">
-        <img src="../../images/login-left-banner.png" alt="" class="img-responsive loginpage-left-banner__img">
-      </div>
-      <div class="loginpage-form">
-        <form action="" id="user-signup-form" method="post">
-          <div class="loginpage-form-wrap form-login">
-            <h3 class="text-center loginpage-form__title">Đăng ký</h3>
-            <div class="alert" id="user-signup-alert" role="alert">
-            </div>
-            <div>
-              <div class="user-role">
-                <label class="radio-inline">
-                  <input type="radio" name="userrole" checked>Học viên
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="userrole">Giáo viên
-                </label>
-              </div>
-              <div class="form-group">
-                <input name="username" id="username" placeholder="Tên đăng nhập" type="text" class="form-control loginpage-form__input">
-              </div>
-              <div class="form-group">
-                <input name="email" id="email" placeholder="Email" type="email" class="form-control loginpage-form__input">
-              </div>
-              <div class="form-group has-eye">
-                <input id="password" type="password" placeholder="Mật khẩu" class="form-control loginpage-form__input">
-                <div class="eye">
-                  <img src="../../images/ic_eye0.png" alt="" class="img-responsive">
-                </div>
-              </div>
-              <div class="form-group has-eye">
-                <input id="password-confirm" type="password" placeholder="Nhập lại mật khẩu" class="form-control loginpage-form__input">
-                <div class="eye">
-                  <img src="../../images/ic_eye0.png" alt="" class="img-responsive">
-                </div>
-                <span class="confirm-message" id='password-confirm-message'></span>
-              </div>
-              <div style="margin-bottom: 15px;">
-                <div id="recaptcha-loginForm">
-                </div>
-              </div>
-              <button type="submit" class="btn loginpage-form__button-submit">Đăng ký</button>
+  <div class="hidden-xs" style="margin-top: 67px;"></div>
+  <main>
+    <div class="container-fluid bg-br">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main-content" style="width: 100%;">
+            <div class="u-search-course">
+              <h1 style="font-size: 20px;font-family: inherit;line-height: 1.1;color: inherit;margin-top: 0px;">Kết quả tìm kiếm cho: <span id="search-key"></span></h1>
+              <h4>Tìm thấy <b id="number-course"></b> khóa học online</h4>
+              <br>
+              <section id="search-courses-list">
+              </section>
             </div>
           </div>
-        </form>
-        <div class="login-block">Bạn đã có tài khoản?
-          <a class="login-link" href="login.html">Đăng nhập</a>
         </div>
       </div>
     </div>
-  </div>
+  </main>
   <footer>
     <div id="footer2">
       <div class="container">

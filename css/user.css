@@ -60,6 +60,12 @@ h4, .h4, h5, .h5, h6, .h6 {
   border-color: #f5c6cb;
 }
 
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -851,7 +857,7 @@ ol, ul {
   color: #000;
   display: inline-block;
   width: 217px;
-  min-height: 230px;
+  min-height: 205px;
   max-height: 250px;
   margin: 5px;
   background: #fff;
@@ -867,10 +873,14 @@ ol, ul {
 }
 
 .img-course img {
-  max-height: 130px;
+  height: 109px;
   width: 100%;
   border-bottom: 1px solid #ddd;
   border-radius: 3px 3px 0 0;
+}
+
+#search-courses-list .img-course img {
+  height: 130px;
 }
 
 .content-course {
@@ -1592,6 +1602,18 @@ input[type=checkbox], input[type=radio] {
   float: right;
 }
 
+.signup-block, .login-block {
+  text-align: center;
+}
+
+.signup-block .signup-link, .login-block .login-link {
+  color: #f26c4f;
+}
+
+.signup-block .signup-link:hover, .login-block .login-link:hover{
+  text-decoration: underline;
+}
+
 /* account wrap */
 .account-wrap {
   position: relative;
@@ -2167,6 +2189,57 @@ input[type=checkbox], input[type=radio] {
   transform: rotate(-180deg);
   -webkit-transform: rotate(-180deg);
 }
+
+/* search course*/
+.u-search-course {
+  margin-top: 20px;
+}
+
+.u-search-course .content-course {
+  height: 95px;
+}
+
+.u-search-course .title-course {
+  height: 60px;
+  overflow: visible;
+  font-size: 15px;
+}
+
+.u-search-course h1{
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.u-search-course h4 {
+  font-weight: 200;
+  margin-left: 15px;
+}
+
+.u-search-course .col-lg-3 {
+  float: left;
+}
+
+.course-box-slider {
+  color: #000;
+  display: inline-block;
+  max-height: 245px;
+  background: #fff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.u-search-course .course-box-slider {
+  margin: 0 7px 0 0;
+  min-height: 100px;
+  width: 100%;
+}
+
+.title-course {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
 
 @media only screen and (min-width: 768px) {
   .container {

@@ -75,50 +75,70 @@ $(document).ready(function() {
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
         var lesson_block = `<li>
-        <a class="lesson-link" data-id=${data[i].id}>
-        <i class="fas fa-play-circle"></i>
+        <a class="lesson-link" data-id=${data[i].id} data-des="${data[i].description}">
+        <i class="fas fa-angle-down"></i>
         ${data[i].lessonName}
         </a>
+        <ul class="lesson-content" style="display:none;">
+        </ul>
         </li>`
         $('#course-content').append(lesson_block);
+        if (data[i].file != null) {
+          var href = 'https://teaching-online-lms.herokuapp.com' + data[i].file;
+          var file_block = `<li>
+          <a class="file-link" href="${href}" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+          File pdf
+          </a>
+          </li>`
+          $($('.lesson-content')[i]).append(file_block)
+        }
+
+        if (data[i].offlineUrl != null) {
+          var file_block = `<li>
+          <a class="video-link" data-src=${data[i].offlineUrl}>
+          <i class="fas fa-play-circle"></i>
+          Video bài học
+          </a>
+          </li>`
+          $($('.lesson-content')[i]).append(file_block)
+        }
       }
       console.log(data);
 
       $('.lesson-link').click(function() {
-        console.log('click');
-        var lessonId = $(this).attr('data-id');
-        $.ajax({
-          url: 'https://teaching-online-lms.herokuapp.com/api/user/lessonDetail',
-          dataType: 'json',
-          data: {
-            lessonId: lessonId
-          },
-          error: function(e) {
-            alert('<p>Đã có lỗi xảy ra khi lấy dữ liệu</p>');
-            console.log(e);
-          },
-          success: function(data) {
-            $('#lesson-name').html(data.lessonName);
-            $('#lesson-description').html(data.description);
-            $('#lesson-video-frame').attr('src', data.liveStreamUrl);
-            console.log(data);
-          },
-          type: 'GET'
-        });
-        var tabscontent = $('.tab-content');
-        var tablinks = $('.tablink');
-        for (i = 0; i < tablinks.length; i++) {
-          $(tablinks[i]).removeClass('active');
-        }
-        for (i = 0; i < tabscontent.length; i++) {
-          $(tabscontent[i]).removeClass('show-inline');
-        }
-        $('#u-course-test-result').removeClass('show-inline');
-        $('#u-lesson-content').addClass('show-inline');
-        $('#course-dropdown').addClass('active');
-        $('.lesson-link').removeClass('active');
-        $(this).addClass('active');
-      })
+        $(this).next().toggleClass('show');
+      });
+
+      $.each($('.video-link'), function(index) {
+        $(this).click(function() {
+          var tabscontent = $('.tab-content');
+          var tablinks = $('.tablink');
+          var videolinks = $('.video-link');
+          for (i = 0; i < tablinks.length; i++) {
+            $(tablinks[i]).removeClass('active');
+          }
+
+          for (i = 0; i < tabscontent.length; i++) {
+            $(tabscontent[i]).removeClass('show-inline');
+          }
+
+          for (i = 0; i < videolinks.length; i++) {
+            $(videolinks[i]).removeClass('active');
+          }
+
+          $('#u-course-test-result').removeClass('show-inline');
+
+          var lesson_name = $($('.lesson-link')[index]).text();
+          var description = $($('.lesson-link')[index]).attr('data-des');
+          var src = $(this).attr('data-src');
+          $('#lesson-name').html(lesson_name);
+          $('#lesson-description').html(description);
+          $('#lesson-video-frame').attr('src', src);
+          $('#u-lesson-content').addClass('show-inline');
+          $(this).addClass('active');
+        })
+      });
     },
     type: 'GET'
   });
@@ -126,12 +146,6 @@ $(document).ready(function() {
   $('#course-dropdown').click(function dropdown(e) {
     e.preventDefault();
     $('#course-content').toggleClass('show');
-    if ($('#course-content').hasClass('show')) {
-      $($('.u-detail-block-right')[0]).attr('height', '665px');
-    }
-    else {
-      $($('.u-detail-block-right')[0]).attr('height', '220px');
-    }
   });
 
   var tablinks = $('.tablink');
@@ -212,6 +226,10 @@ $(document).ready(function() {
     tablinks = $('.tablink');
     for (i = 0; i < tablinks.length; i++) {
       $(tablinks[i]).removeClass('active');
+    }
+    var videolinks = $('.video-link');
+    for (i = 0; i < videolinks.length; i++) {
+      $(videolinks[i]).removeClass('active');
     }
     $('.lesson-link').removeClass('active');
     $(tabId).addClass('show-inline');

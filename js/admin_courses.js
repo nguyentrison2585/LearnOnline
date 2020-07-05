@@ -55,7 +55,7 @@ $(document).ready(function() {
         $('#update-course-name').val(row.find('.courses-column-2').html());
         $('#update-course-subject').val(row.find('.courses-column-3 span').html());
         $('#update-description').val(row.find('.courses-column-4').html());
-        $('#update-course-teacher').val(row.find('.courses-column-5').html());
+        $('#updateco-teacher').val(row.find('.courses-column-5').html());
         $('#update-course-form').attr('data-id', row.attr('data-id'));
       });
 
@@ -76,10 +76,10 @@ $(document).ready(function() {
 
       $('.delete-btn').click(function() {
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this course!",
+          title: "Bạn đã chắc chắn?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục khóa học!",
           icon: "warning",
-          buttons: ["Stop", "Delete it"],
+          buttons: ["Dừng lại", "Tiếp tục"],
           dangerMode: true,
           timer: 5000,
         })
@@ -99,7 +99,7 @@ $(document).ready(function() {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                swal("Error when delete the course!", {
+                swal("Lỗi khi xóa khóa học!", {
                   icon: "warning",
                 });
               },
@@ -109,14 +109,14 @@ $(document).ready(function() {
                   $(no_cell).html(parseInt($(no_cell).html()) - 1)
                 }
                 btn.parent().parent().parent().remove();
-                swal("Poof! The course has been deleted!", {
+                swal("Khóa học đã bị xóa!", {
                   icon: "success",
                 });
                 console.log(data);
               }
             });
           } else {
-            swal("The course is safe!");
+            swal("Khóa học đã được giữ lại!");
           }
         });
       });
@@ -160,9 +160,10 @@ $(document).ready(function() {
     },
     success: function(data) {
       for(let i = 0;i < data.length;i++) {
-        var subject_option = `<option value="${data[i].username}">${data[i].username}</option>`
+        var teacher_option = `<option value="${data[i].username}">${data[i].username}</option>`
         console.log(data);
-        $('#newco-teacher').append(subject_option);
+        $('#newco-teacher').append(teacher_option);
+        $('#updateco-teacher').append(teacher_option);
       }
     }
   });
@@ -228,7 +229,7 @@ $(document).ready(function() {
         <button class="item update-btn" data-toggle="tooltip" data-placement="top" title="Edit">
         <i class="fas fa-pen"></i>
         </button>
-        <button class="item" data-toggle="tooltip" data-placement="top" title="Update image" data-src="">
+        <button class="item update-img-btn" data-toggle="tooltip" data-placement="top" title="Update image" data-src="">
         <i class="far fa-image"></i>
         </button>
         <button class="item delete-btn" data-toggle="tooltip" data-placement="top" title="Delete">
@@ -249,7 +250,7 @@ $(document).ready(function() {
           $('#update-course-name').val(row.find('.courses-column-2').html());
           $('#update-course-subject').val(row.find('.courses-column-3 span').html());
           $('#update-description').val(row.find('.courses-column-4').html());
-          $('#update-course-teacher').val(row.find('.courses-column-5').html());
+          $('#updateco-teacher').val(row.find('.courses-column-5').html());
           $('#update-course-form').attr('data-id', row.attr('data-id'));
         });
 
@@ -258,16 +259,16 @@ $(document).ready(function() {
           $('#update-img-modal').css('display', 'block');
           $('#update-img-modal input').val('');
           var row = $(this).parent().parent().parent();
-          $('#load-course-image').prop('src', 'https://teaching-online-lms.herokuapp.com' + $(this).attr('data-src'));
+          $('#load-course-image').prop('src', '../../images/default-banner.jpg');
           $('#update-img-form').attr('data-id', row.attr('data-id'));
         });
 
         $($('.delete-btn')[$('.delete-btn').length-1]).click(function() {
           swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this course!",
+            title: "Bạn đã chắc chắn?",
+            text: "Sau khi xóa bạn sẽ không thể khôi phục khóa học!",
             icon: "warning",
-            buttons: ["Stop", "Delete it"],
+            buttons: ["Dừng lại", "Tiếp tục"],
             dangerMode: true,
           })
           .then((willDelete) => {
@@ -286,7 +287,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 error: function(e) {
                   console.log(e.message);
-                  swal("Error when delete the course!", {
+                  swal("Xóa khóa học không thành công!", {
                     icon: "warning",
                   });
                 },
@@ -296,14 +297,14 @@ $(document).ready(function() {
                     $(no_cell).html(parseInt($(no_cell).html()) - 1);
                   }
                   btn.parent().parent().parent().remove();
-                  swal("Poof! The course has been deleted!", {
+                  swal("Khóa học đã bị xóa!", {
                     icon: "success",
                   });
                   console.log(data);
                 }
               });
             } else {
-              swal("The course is safe!");
+              swal("Khóa học đã được giữ lại!");
             }
           });
           $('#new-course-modal').css('display', 'none');
@@ -322,6 +323,7 @@ $(document).ready(function() {
     var course_name = $('#update-course-name').val();
     console.log(course_name);
     var description = $('#update-description').val();
+    var teacher = $('#updateco-teacher').find(":selected").val();
     $.ajax({
       url: 'https://teaching-online-lms.herokuapp.com/api/admin/update-course',
       type: 'POST',
@@ -332,6 +334,7 @@ $(document).ready(function() {
         courseId: id,
         courseName: course_name,
         description: description,
+        teacher: teacher,
         completed: 'false'
       },
       dataType: 'json',
@@ -344,6 +347,7 @@ $(document).ready(function() {
       success: function(data) {
         $('[data-id="' + data.id + '"] .courses-column-2').html(data.courseName);
         $('[data-id="' + data.id + '"] .courses-column-4').html(data.description);
+        $('[data-id="' + data.id + '"] .courses-column-5').html(teacher);
         swal("Cập nhật khóa học thành công", {
           icon: "success",
         });
@@ -364,33 +368,44 @@ $(document).ready(function() {
 
   $('#update-img-form').submit(function(e) {
     e.preventDefault();
-    var id = $(this).attr('data-id');
     console.log(id);
-    var image = $('#course-img-file').prop('files')[0];
-    var fd = new FormData();
-    fd.append('courseId', id);
-    fd.append('file', image);
-    $.ajax({
-      url: 'https://teaching-online-lms.herokuapp.com/api/admin/upload-banner-course',
-      type: 'POST',
-      headers: {
-        'Authorization': sessionStorage.getItem('admin_token')
-      },
-      data: fd,
-      contentType: false,
-      processData: false,
-      dataType: 'json',
-      error: function(e) {
-        swal("Cập nhật ảnh bìa không thành công", {
-          icon: "warning"
+    var files = $('#course-img-file').prop('files');
+    if (files.length > 0) {
+      if (files[0].size/1024/1024 <= 5) {
+        var id = $(this).attr('data-id');
+        var image = files[0];
+        var fd = new FormData();
+        fd.append('courseId', id);
+        fd.append('file', image);
+        $.ajax({
+          url: 'https://teaching-online-lms.herokuapp.com/api/admin/upload-banner-course',
+          type: 'POST',
+          headers: {
+            'Authorization': sessionStorage.getItem('admin_token')
+          },
+          data: fd,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
+          error: function(e) {
+            swal("Cập nhật ảnh bìa không thành công", {
+              icon: "warning"
+            });
+          },
+          success: function(data) {
+            $('[data-id="' + id + '"] .update-img-btn').attr('data-src', data.url);
+            alert('Cập nhật ảnh bìa thành công');
+            location.reload();
+          }
         });
-      },
-      success: function(data) {
-        $('[data-id="' + id + '"] .update-img-btn').attr('data-src', data.url);
-        alert('Cập nhật ảnh bìa thành công');
-        location.reload();
       }
-    });
+      else {
+        alert('Kích thước file vượt quá 5Mb, vui lòng tải lên file khác!')
+      }
+    }
+    else {
+      alert('Bạn cần tải ảnh lên để cập nhật!');
+    }
     $('#update-img-modal').css('display', 'none');
   });
 })

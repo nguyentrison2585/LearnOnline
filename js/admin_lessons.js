@@ -64,10 +64,10 @@ $(document).ready(function() {
 
       $('.delete-btn').click(function() {
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this lesson!",
+          title: "Bạn đã chắc chắn?",
+          text: "Sau khi xóa bạn sẽ không thể khôi phục bài học!",
           icon: "warning",
-          buttons: ["Stop", "Delete it"],
+          buttons: ["Dừng lại", "Tiếp tục"],
           dangerMode: true,
           timer: 5000,
         })
@@ -87,7 +87,7 @@ $(document).ready(function() {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                swal("Error when delete the lesson!", {
+                swal("Xóa bài học không thành công!!", {
                   icon: "warning",
                 });
               },
@@ -97,14 +97,14 @@ $(document).ready(function() {
                   $(no_cell).html(parseInt($(no_cell).html()) - 1)
                 }
                 btn.parent().parent().parent().remove();
-                swal("Poof! The lesson has been deleted!", {
+                swal("Bài học đã bị xóa!", {
                   icon: "success",
                 });
                 console.log(data);
               }
             });
           } else {
-            swal("The lesson is safe!");
+            swal("Bài học đã được giữ lại!");
           }
         });
       });
@@ -221,10 +221,10 @@ $('#new-lesson-form').submit(function(e) {
 
       $($('.delete-btn')[$('.delete-btn').length-1]).click(function() {
         swal({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this lesson!",
+          title: "Bạn đã chắc chắn?",
+          text: "Sau khi xóa bạn sẽ không thể khôi phục bài học!",
           icon: "warning",
-          buttons: ["Stop", "Delete it"],
+          buttons: ["Dừng lại", "Tiếp tục"],
           dangerMode: true,
           timer: 5000,
         })
@@ -244,7 +244,7 @@ $('#new-lesson-form').submit(function(e) {
               dataType: 'json',
               error: function(e) {
                 console.log(e.message);
-                swal("Error when delete the lesson!", {
+                swal("Xóa bài học không thành công!!", {
                   icon: "warning",
                 });
               },
@@ -254,20 +254,20 @@ $('#new-lesson-form').submit(function(e) {
                   $(no_cell).html(parseInt($(no_cell).html()) - 1)
                 }
                 btn.parent().parent().parent().remove();
-                swal("Poof! The lesson has been deleted!", {
+                swal("Bài học đã bị xóa!", {
                   icon: "success",
                 });
                 console.log(data);
               }
             });
           } else {
-            swal("The lesson is safe!");
+            swal("Bài học đã được giữ lại!");
           }
         });
       });
-      swal("Cập nhật khóa học thành công", {
-    icon: "success",
-  });
+      swal("Tạo mới bài học thành công", {
+        icon: "success",
+      });
     }
   });
   $('#new-lesson-modal').css('display', 'none');
@@ -302,7 +302,7 @@ $('#new-lesson-form').submit(function(e) {
       dataType: 'json',
       error: function(e) {
         console.log(e.message);
-        swal("Cập nhật khóa học không thành công!", {
+        swal("Cập nhật bài học không thành công!", {
         icon: "warning",
       });
       },
@@ -314,7 +314,7 @@ $('#new-lesson-form').submit(function(e) {
       }
     });
     $('#update-lesson-modal').css('display', 'none');
-    swal("Cập nhật khóa học thành công", {
+    swal("Cập nhật bài học thành công", {
       icon: "success",
     });
   });
